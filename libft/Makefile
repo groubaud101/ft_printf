@@ -10,7 +10,7 @@ SRC_S	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 			ft_isprint.c ft_toupper.c ft_tolower.c \
 			ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c \
-			ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
+			ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_strcmp.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 			ft_strmapi.c ft_lst_read.c ft_read_file.c \
 			ft_abs.c ft_isspace.c ft_puttab_fd.c ft_nbrlen_base.c \
@@ -22,7 +22,7 @@ BONUS_S	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
 			ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 			ft_lstmap.c
 
-SRCS	=	$(addprefix $(DIR_S), $(SRC_S))
+SRCS	=	$(addprefix $(DIR_S), $(SRC_S)) $(BONUS)			
 INCLUDE	=	$(addprefix $(DIR_H), $(INC))
 BONUS	=	$(addprefix $(DIR_B), $(BONUS_S))
 
@@ -47,14 +47,12 @@ SRCT	=	$(addprefix $(DIR_T), $(SRC_T))
 
 all		:	$(NAME)
 
-bonus	:	$(OBJS_B) $(OBJS)
-			$(LIB_B)
 
 $(NAME)	:	$(OBJS)
 			$(LIB)
 
 clean	:
-			rm -rf $(OBJS) $(OBJS_B)
+			rm -rf $(OBJS)
 
 fclean	:	clean
 			rm -rf $(NAME)
