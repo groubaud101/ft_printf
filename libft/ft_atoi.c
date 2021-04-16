@@ -1,47 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/01 17:23:20 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/01 17:23:20 by groubaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
+#include <limits.h>
 
-static int	ft_check_atoi(const char *nbr)
+static int	extreme_value(int neg)
 {
-	int	index;
-
-	index = 0;
-	while (ft_isspace(nbr[index]) == 1)
-		index++;
-	if (nbr[index] != '+' && nbr[index] != '-' && ft_isdigit(nbr[index]) == 0)
+	if (neg == -1)
 		return (0);
-	if (nbr[index] == '+' || nbr[index] == '-')
-		index++;
-	if (ft_isdigit(nbr[index]) == 0)
-		return (0);
-	return (1);
+	return (-1);
 }
 
-int		ft_atoi(const char *nbr)
+int	ft_atoi(const char *nbr)
 {
-	int	index;
-	int	nb;
-	int	mult;
+	int		index;
+	int		neg;
+	long	nb;
+	long	limit;
 
 	index = 0;
 	nb = 0;
-	mult = 1;
-	if (ft_check_atoi(nbr) == 0)
-		return (ATOI_ERROR);
+	neg = 1;
 	while (ft_isspace(nbr[index]) == 1)
 		index++;
 	if (nbr[index] == '+' || nbr[index] == '-')
-		index++;
+		if (nbr[index++] == '-')
+			neg = -1;
+	limit = LONG_MAX / 10;
 	while (ft_isdigit(nbr[index]) == 1)
-		index++;
-	index--;
-	while (index >= 0 && ft_isdigit(nbr[index]) == 1)
 	{
-		nb = (nbr[index] - '0') * mult + nb;
-		mult*=10;
-		index--;
+		if (nb > limit)
+			return (extreme_value(neg));
+		nb = (nb * 10) + (nbr[index] - '0');
+		if (nb < 0)
+			return (extreme_value(neg));
+		index++;
 	}
-	if (index >= 0 && nbr[index] == '-')
-		return (-nb);
-	return (nb);
+	return ((int)(nb * neg));
 }

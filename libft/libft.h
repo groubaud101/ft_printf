@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/16 20:14:10 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/16 20:14:10 by groubaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <string.h>
 
 # define ATOI_ERROR 0
+
 # ifndef BUFF
 #  define BUFF 11
 # endif
@@ -45,6 +58,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
+int		ft_isinstr(int c, const char *str);
 
 /*
 ** Up or low the case
@@ -83,7 +97,7 @@ size_t	ft_strlen(const char *s);
 
 int		ft_nbrlen_base(int n, int len_base);
 int		ft_atoi(const char *nptr);
-int		ft_atoi_base(const char *nptr, char *base); // a faire
+int		ft_atoi_base(const char *nptr, const char *base); // a faire
 char	*ft_itoa(int n);
 char	*ft_itoa_base(int n, char *base); // gestion d'erreur à faire (base)
 

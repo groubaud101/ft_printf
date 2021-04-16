@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/16 20:07:27 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/16 20:07:27 by groubaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char	*ft_rec_itoa_base(int n, char *nbr, int i, char *base)
@@ -6,21 +18,6 @@ static char	*ft_rec_itoa_base(int n, char *nbr, int i, char *base)
 		nbr = ft_rec_itoa_base(n / ft_strlen(base), nbr, i - 1, base);
 	nbr[i] = base[ft_abs(n % ft_strlen(base))];
 	return (nbr);
-}
-
-int		ft_nbrlen_base(int n, int b)
-{
-	int	len;
-
-	len = 0;
-	if (n < 0)
-		len++;
-	while (n != 0)
-	{
-		n = n / b;
-		len++;
-	}
-	return (len);
 }
 
 char		*ft_itoa_base(int n, char *base)

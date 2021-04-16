@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mult.c                                          :+:      :+:    :+:   */
+/*   ft_isinstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 20:13:24 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:13:24 by groubaud         ###   ########.fr       */
+/*   Created: 2021/04/16 20:13:02 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/16 20:13:02 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_mult(int n1, int n2)
+int	ft_isinstr(char c, const char *str)
 {
-	return (n1 * n2);
+	while (*str)
+	{
+		if (c == *str)
+			return (1);
+		str++;
+	}
+	return (0);
 }

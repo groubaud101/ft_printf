@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/01 17:24:29 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/01 17:24:29 by groubaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
+	if (str)
+		write(fd, str, ft_strlen(str));
 }

@@ -1,19 +1,16 @@
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/01 17:24:52 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/01 17:24:52 by groubaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-static int	ft_isinstr(char c, char const *set)
-{
-	int	index;
-
-	index = 0;
-	while (set[index])
-	{
-		if (c == set[index])
-			return (1);
-		index++;
-	}
-	return (0);
-}
 
 static int	ft_strlentrim(char const *s1, char const *set)
 {
@@ -40,13 +37,15 @@ static int	ft_strlentrim(char const *s1, char const *set)
 	return (len);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		index;
 	int		jndex;
 	char	*trim;
 	int		len;
 
+	if (!s1 || !set)
+		return (NULL);
 	len = ft_strlentrim(s1, set);
 	trim = (char *)ft_calloc(sizeof(*trim), len + 1);
 	if (!trim)
@@ -58,10 +57,6 @@ char		*ft_strtrim(char const *s1, char const *set)
 	while (ft_isinstr(s1[index], set) == 1)
 		index++;
 	while (jndex < len)
-	{
-		trim[jndex] = s1[index];
-		jndex++;
-		index++;
-	}
+		trim[jndex++] = s1[index++];
 	return (trim);
 }
