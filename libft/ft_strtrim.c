@@ -19,7 +19,7 @@ static int	ft_strlentrim(char const *s1, char const *set)
 
 	index = 0;
 	len = 0;
-	while (ft_isinstr(s1[index], set) == 1)
+	while (ft_isinstr(s1[index], set) != -1)
 		index++;
 	if (s1[index] == '\0')
 		return (0);
@@ -29,7 +29,7 @@ static int	ft_strlentrim(char const *s1, char const *set)
 		len++;
 	}
 	index--;
-	while (index >= 0 && ft_isinstr(s1[index], set) == 1)
+	while (index >= 0 && ft_isinstr(s1[index], set) != -1)
 	{
 		index--;
 		len--;
@@ -54,7 +54,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (trim);
 	index = 0;
 	jndex = 0;
-	while (ft_isinstr(s1[index], set) == 1)
+	while (ft_isinstr(s1[index], set) != -1)
 		index++;
 	while (jndex < len)
 		trim[jndex++] = s1[index++];

@@ -12,11 +12,16 @@
 
 int	ft_isinstr(char c, const char *str)
 {
-	while (*str)
+	int		index;
+
+	index = 0;
+	while (str[index])
 	{
-		if (c == *str)
-			return (1);
-		str++;
+		if (c == str[index])
+			return (index);
+		index++;
 	}
-	return (0);
+	if (c == '\0')
+		return (index);
+	return (-1);
 }

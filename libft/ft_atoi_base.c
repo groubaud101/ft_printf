@@ -11,7 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <limits.h>
+
+static int	extreme_value(int neg)
+{
+	if (neg == -1)
+		return (0);
+	return (-1);
+}
 
 static int	ft_check_atoi(const char *nbr, const char *base)
 {
@@ -21,46 +28,54 @@ static int	ft_check_atoi(const char *nbr, const char *base)
 	index = 0;
 	while (ft_isspace(nbr[index]) == 1)
 		index++;
-	if (nbr[index] != '+' && nbr[index] != '-'
-		&& ft_isinstr(nbr[index], base) == 0)
-		return (0);
 	if (nbr[index] == '+' || nbr[index] == '-')
 		index++;
-	if (ft_isinstr(nbr[index], base) == 0)
+	if (ft_isinstr(nbr[index], base) == -1)
 		return (0);
 	len_base = ft_strlen(base);
 	if (len_base < 2 || len_base > 16)
 		return (0);
 	index = 0;
-
 	return (1);
 }
 
-int		ft_atoi_base(const char *nbr, const char *base)
+int	ft_atoi_base_two(const char *nbr, const char *base, int index, int neg)
 {
-	int	index;
-	int	nb;
-	int	mult;
+	int		len_base;
+	int		c;
+	long	nb;
+	long	limit;
+
+	nb = 0;
+	limit = LONG_MAX / 10;
+	len_base = ft_strlen(base);
+	c = ft_isinstr(nbr[index], base);
+	while (nbr[index] && c != -1)
+	{
+		if (nb > limit)
+			return (extreme_value(neg));
+		nb = (nb * len_base) + c;
+		if (nb < 0)
+			return (extreme_value(neg));
+		index++;
+		c = ft_isinstr(nbr[index], base);
+	}
+	return ((int)nb * neg);
+}
+
+int	ft_atoi_base(const char *nbr, const char *base)
+{	
+	int		index;
+	int		neg;
 
 	index = 0;
-	nb = 0;
-	mult = 1;
+	neg = 1;
 	if (ft_check_atoi(nbr, base) == 0)
 		return (ATOI_ERROR);
 	while (ft_isspace(nbr[index]) == 1)
 		index++;
 	if (nbr[index] == '+' || nbr[index] == '-')
-		index++;
-	while (ft_isinstr(nbr[index], base) == 1)
-		index++;
-	index--;
-	while (index >= 0 && ft_isinstr(nbr[index], base) == 1)
-	{
-		nb = (nbr[index] - '0') * mult + nb;
-		mult*=10;
-		index--;
-	}
-	if (index >= 0 && nbr[index] == '-')
-		return (-nb);
-	return (nb);
+		if (nbr[index++] == '-')
+			neg = -1;
+	return (ft_atoi_base_two(nbr, base, index, neg));
 }
