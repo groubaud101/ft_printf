@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div.c                                           :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 20:12:56 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:12:56 by groubaud         ###   ########.fr       */
+/*   Created: 2021/04/23 17:04:25 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/23 17:04:25 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_div(int n1, int n2)
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src)
 {
-	return (n1 / n2);
+	size_t	index;
+
+	index = 0;
+	while (src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	dest[index] = src[index];
+	return (dest);
 }

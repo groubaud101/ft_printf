@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div.c                                           :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 20:12:56 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:12:56 by groubaud         ###   ########.fr       */
+/*   Created: 2021/04/23 17:06:59 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/23 17:06:59 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_div(int n1, int n2)
+#include "libft.h"
+
+char	*ft_strcat(char *dst, const char *src)
 {
-	return (n1 / n2);
+	size_t	d;
+	size_t	s;
+
+	d = ft_strlen(dst);
+	s = 0;
+	while (src[s])
+	{
+		dst[d++] = src[s++];
+	}
+	dst[d] = '\0';
+	return (dst);
 }

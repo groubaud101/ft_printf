@@ -12,18 +12,11 @@
 
 #include "libft.h"
 
-static int	ft_this_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n > 9 || n < -9)
 		ft_putnbr_fd(n / 10, fd);
 	if (n >= -9 && n < 0)
 		ft_putchar_fd('-', fd);
-	ft_putchar_fd(ft_this_abs(n % 10) + '0', fd);
+	ft_putchar_fd(ft_abs(n % 10) + '0', fd);
 }

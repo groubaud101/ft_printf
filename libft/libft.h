@@ -80,14 +80,14 @@ char	*ft_strrchr(const char *s, int c);
 ** String management
 */
 
-char	*ft_strcpy(char *dst, const char *src); // a faire
-char	*ft_strcat(char *dst, const char *src); // a faire
-char	*ft_strncpy(char *dst, const char *src, size_t size); // a faire
-char	*ft_strncat(char *dst, const char *src, size_t size); // a faire
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strcat(char *dst, const char *src);
+char	*ft_strncpy(char *dst, const char *src, size_t size);
+char	*ft_strncat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
-char	*ft_strstr(const char *haystack, const char *needle); // a faire
+char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 size_t	ft_strlen(const char *s);
 
@@ -97,9 +97,9 @@ size_t	ft_strlen(const char *s);
 
 int		ft_nbrlen_base(int n, int len_base);
 int		ft_atoi(const char *nptr);
-int		ft_atoi_base(const char *nptr, const char *base); // a faire
+int		ft_atoi_base(const char *nptr, const char *base);
 char	*ft_itoa(int n);
-char	*ft_itoa_base(int n, char *base); // gestion d'erreur à faire (base)
+char	*ft_itoa_base(int n, char *base);
 
 /*
 ** Math
@@ -111,7 +111,6 @@ int		ft_sub(int n1, int n2);
 int		ft_mult(int n1, int n2);
 int		ft_div(int n1, int n2);
 int		ft_mod(int n1, int n2);
-int		ft_sqrt(int n); // a faire
 
 /*
 ** Memory allocation
@@ -169,6 +168,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
-
 
 #endif

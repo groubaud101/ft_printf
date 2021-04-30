@@ -87,7 +87,7 @@ static int	ft_copy(t_read **start, char *buf, int fd)
 	return (size);
 }
 
-char		*ft_read_file(int fd)
+char	*ft_read_file(int fd)
 {
 	char	*buf;
 	int		rd;

@@ -20,7 +20,7 @@ static char	*ft_rec_itoa_base(int n, char *nbr, int i, char *base)
 	return (nbr);
 }
 
-char		*ft_itoa_base(int n, char *base)
+char	*ft_itoa_base(int n, char *base)
 {
 	int		len_nbr;
 	char	*nbr;

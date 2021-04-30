@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 20:12:56 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:12:56 by groubaud         ###   ########.fr       */
+/*   Created: 2021/04/23 17:12:39 by groubaud          #+#    #+#             */
+/*   Updated: 2021/04/23 17:12:39 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_div(int n1, int n2)
+#include <string.h>
+
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	return (n1 / n2);
+	size_t	index;
+
+	if (*needle == 0)
+		return ((char *)haystack);
+	while (*haystack)
+	{
+		index = 0;
+		while (haystack[index] == needle[index] && needle[index])
+			index++;
+		if (needle[index] == '\0')
+			return ((char *)haystack);
+		haystack++;
+	}
+	return (NULL);
 }

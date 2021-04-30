@@ -12,34 +12,12 @@
 
 #include "libft.h"
 
-static int	ft_this_abs(int n)
-{
-	if (n >= 0)
-		return (n);
-	return (-n);
-}
-
 static char	*ft_rec_itoa(int n, char *nbr, int i)
 {
 	if (n > 9 || n < -9)
 		nbr = ft_rec_itoa(n / 10, nbr, i - 1);
-	nbr[i] = ft_this_abs(n % 10) + '0';
+	nbr[i] = ft_abs(n % 10) + '0';
 	return (nbr);
-}
-
-static int	ft_nbrlen(int n)
-{
-	int	len;
-
-	len = 0;
-	if (n < 0)
-		len++;
-	while (n != 0)
-	{
-		n = n / 10;
-		len++;
-	}
-	return (len);
 }
 
 char	*ft_itoa(int n)
@@ -49,7 +27,7 @@ char	*ft_itoa(int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	len_nbr = ft_nbrlen(n);
+	len_nbr = ft_nbrlen_base(n, 10);
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)
 		return (NULL);
