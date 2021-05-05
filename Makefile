@@ -15,9 +15,9 @@ NAME	=	libprintf.a
 DIR_S	=	./
 DIR_L	=	./libft/
 
-SRC_S	=	main ft_printf
+SRC_S	=	ft_printf
 
-INC		=	$(DIR_L)libft.h
+INC		=	./include/
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -30,30 +30,32 @@ AR		=	ar rcs
 LIB		=	-L $(DIR_L) -lft
 LIB_P	=	-L $(DIR_S) -lprintf
 
+TEST	=	-I $(INC) main.c
+
 ## commande
 
-test	:	all
-			$(CC) $(CFLAGS) $(LIB_P) -o exec
-			./exec
+all		:	$(NAME)
 
-all		:	lib $(NAME)
+test	:	all
+			$(CC) $(CFLAGS) $(TEST) $(LIB_P) -o exec
+			./exec
+			rm -rf exec
 
 lib		:
 			make -C $(DIR_L) all
 			cp $(DIR_L)libft.a $(NAME)
 
 .c.o	:	$(SRCS)
-			$(CC) -I$(DIR_L) -I. $(CFLAGS) -c -o $@ $<
+			$(CC) -I$(INC) $(CFLAGS) -c -o $@ $<
 
-$(NAME)	:	$(OBJS) $(INC)
-			$(AR) $@ $^
+$(NAME)	:	$(OBJS) $(INC)ft_printf.h
+			$(AR) $@ $(OBJS)
 
 clean	:
 			rm -rf $(OBJS)
 
 fclean	:	clean
 			rm -rf $(NAME)
-			rm -rf exec
 
 clean_l	:
 			make -C $(DIR_L) clean
@@ -61,6 +63,6 @@ clean_l	:
 fclean_l:
 			make -C $(DIR_L) fclean
 
-re		:	fclean all
+re		:	fclean lib all
 
 .PHONY	:	all clean fclean re

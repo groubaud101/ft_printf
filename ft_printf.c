@@ -20,8 +20,8 @@ int	ft_printf(const char *format, ...)
 {
 	va_list params;
 	size_t	index;
-
 	va_start(params, format);
+
 	// verif de la chaine 1
 	while (*format)
 	{
