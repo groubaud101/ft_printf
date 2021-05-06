@@ -18,7 +18,10 @@ void	ft_puttab_fd(char **tab, char *sep, int fd)
 
 	index = 0;
 	if (!tab || !tab[index])
+	{
+		ft_putstr_fd("(null)", fd);
 		return ;
+	}
 	while (tab[index])
 	{
 		ft_putstr_fd(tab[index], fd);

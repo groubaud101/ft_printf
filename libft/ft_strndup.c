@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 17:24:26 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/01 17:24:26 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/05 14:29:12 by groubaud          #+#    #+#             */
+/*   Updated: 2021/05/05 14:29:12 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strndup(const char *s, size_t n)
 {
-	if (!s)
+	char	*str;
+	size_t	index;
+	size_t	len;
+
+	len = ft_strlen(s);
+	if (len > n)
+		len = n;
+	str = (char *)ft_calloc(sizeof(*str), len + 1);
+	if (!str)
+		return (NULL);
+	index = 0;
+	while (index < len)
 	{
-		write(fd, "(null)", 6);
-		return ;
+		str[index] = s[index];
+		index++;
 	}
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	return (str);
 }
