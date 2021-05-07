@@ -15,33 +15,56 @@
 
 // int integerValue = (int) va_arg( parametersInfos, int );
 
+static void	ft_init_tprintf(t_printf *ptr)
+{
+	if (ptr == NULL)
+	{
+		ptr = (t_printf *)malloc(sizeof(*ptr));
+		if (!ptr)
+			return (NULL);
+		ptr->flag = "-0";
+		ptr->conv = "cspdiuxX%";
+	}
+	else
+	{
+		if (ptr->patern)
+			free(ptr->patern);
+		if (ptr->result)
+			free(ptr->result);
+	}
+	ptr->minus = -1;
+	ptr->zero = -1;
+	ptr->field = -1;
+	ptr->precis = -1;
+	ptr->num_conv = -1;
+	ptr->patern = NULL;
+	ptr->len_pat = -1;
+	ptr->len_res = -1;
+	ptr->result = NULL;
+}
 
 int	ft_printf(const char *format, ...)
 {
-	va_list params;
-	size_t	index;
-	va_start(params, format);
+	va_list 	params;
+	t_printf	*ptr;
 
-	// verif de la chaine 1
+	va_start(params, format);
+	ptr = NULL;
 	while (*format)
 	{
-		index = 0;
 		if (*format == '%')
 		{
-			// verif du patern
-			// remplissage de la structure
-			// avec la selection du segment (patern)
-			// et le nombre de caractere (len_patern)
-			// calcul de la taille finale (len_result)
-			// avec création de la chaine (result)
-
+			format++;
+			ptr = ft_init_tprintf(ptr);
+			if (!ptr)
+				return (NULL);
+			ft_fill_tprintf(ptr, format);
 			// ifs pour le type et redirection (what_is_your_kind)
 
 			// remplissage du result
 
 			// affichage du result
 
-			format++;
 			if (*format == 'i')
 			{
 				int integerValue = (int)va_arg( params, int);
