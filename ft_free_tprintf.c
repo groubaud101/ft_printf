@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdlib.h>
 
 int	ft_free_tprintf(t_printf *ptr)
 {
@@ -20,7 +21,7 @@ int	ft_free_tprintf(t_printf *ptr)
 			free(ptr->patern);
 		if (ptr->result)
 			free(ptr->result);
-		free(ptr)
+		free(ptr);
 	}
 	return (0);
 }

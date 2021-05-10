@@ -15,15 +15,16 @@ NAME	=	libprintf.a
 DIR_S	=	./
 DIR_L	=	./libft/
 
-SRC_S	=	ft_printf
+SRC_S	=	printf fill_tprintf free_tprintf \
+			aff_tprintf
 
 INC		=	./include/
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	=	$(addprefix $(DIR_S), $(addsuffix .c, $(SRC_S)))
-OBJS	=	$(addprefix $(DIR_S), $(addsuffix .o, $(SRC_S)))
+SRCS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .c, $(SRC_S)))
+OBJS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SRC_S)))
 
 AR		=	ar rcs
 
@@ -37,9 +38,10 @@ TEST	=	-I $(INC) main.c
 all		:	$(NAME)
 
 test	:	all
-			$(CC) $(CFLAGS) $(TEST) $(LIB_P) -o exec
-			./exec
-			rm -rf exec
+			$(CC) -w $(TEST) $(LIB_P) -o exec
+			@echo "\nTEST :\n"
+			@./exec
+			@rm -rf exec
 
 lib		:
 			make -C $(DIR_L) all

@@ -11,23 +11,36 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "./include/ft_printf.h"
+#include "ft_printf.h"
 
 /*
 ** patern : %[flags][field width][precision]conversion
 */
 
-static int	ft_paternlen(char *format, t_printf *ptr)
+static int	ft_add_flag(t_printf *ptr, const char *format)
 {
 	int	len;
 
 	len = 0;
 	while (format[len] && ft_isinstr(format[len], ptr->flag) >= 0)
+	{
+		if (format[len] == '-')
+			ptr->minus = 1;
+		else if (format[len] == '0')
+			ptr->zero = 1;
 		len++;
-	if (ft_check_patern_flag(format, len, ptr) == 0)
-		return (-1);
+	}
+	if (ptr->minus == 1)
+		ptr->zero = 0;
+	return (len);
+}
 
-	ptr->field = 0;
+static int	ft_paternlen(t_printf *ptr, const char *format)
+{
+	int	len;
+
+	len = ft_add_flag(ptr, format);
+
 	if (ft_isdigit(format[len]) == 1)
 	{
 		ptr->field = ft_atoi(format + len); // comment gere t on l'overflow ?
@@ -35,7 +48,6 @@ static int	ft_paternlen(char *format, t_printf *ptr)
 			len++;
 	}
 
-	ptr->precis = 0;
 	if (format[len] == '.')
 	{
 		len++;
@@ -50,18 +62,13 @@ static int	ft_paternlen(char *format, t_printf *ptr)
 	return (-1);
 }
 
-static int	ft_result_size(char *patern)
-{
 
-	return (1);
-}
-
-t_printf	*ft_fill_tprintf(t_printf *ptr, char *format)
+t_printf	*ft_fill_tprintf(t_printf *ptr, const char *format)
 {
-	ptr->len_pat = ft_paternlen(format, ptr);
+	ptr->len_pat = ft_paternlen(ptr, format);
 	if (ptr->len_pat == -1)
 	{
-		free(ptr);
+		ft_free_tprintf(ptr);
 		return (NULL);
 	}
 

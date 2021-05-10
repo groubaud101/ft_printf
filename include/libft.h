@@ -118,6 +118,7 @@ int		ft_mod(int n1, int n2);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
+char	*ft_strndup(const char *s, size_t n);
 
 /*
 ** Mandatory part two

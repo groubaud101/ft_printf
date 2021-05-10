@@ -14,6 +14,8 @@ int	ft_isinstr(char c, const char *str)
 {
 	int		index;
 
+	if (c == '\0')
+		return (-1);
 	index = 0;
 	while (str[index])
 	{
@@ -21,7 +23,5 @@ int	ft_isinstr(char c, const char *str)
 			return (index);
 		index++;
 	}
-	if (c == '\0')
-		return (index);
 	return (-1);
 }
