@@ -27,6 +27,14 @@ int		main()
 	// ft_printf("II  /-0*(4).3i : |%-0*.3i|\n", 4, 42);
 	// ft_printf("III /-05.*(5)i : |%-05.*i|\n", 5, 42);
 	// ft_printf("IV  /-0*(2).*(3)i : |%-0*.*i|\n", 2, 3, 42);
-	ft_printf("42 : |%i|\ncoucou : |%s|\nc : |%c|\n",
-				42, "coucou", 'c');
+	// printf("ori ret : %i\n\n", printf("ori\n42 : |%i| coucou : |%s| c : |%c|\n",
+	// 			42, "coucou", 'c'));
+	// printf("ft_ ret : %i\n", ft_printf("ft_\n42 : |%i| coucou : |%s| c : |%c|\n",
+	// 			42, "coucou", 'c'));
+	printf("ori ret : %i\n\n", printf("ori\n42 : |%i|\n",
+				42, "coucou", 'c'));
+	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : |%i|\n",
+				42, "coucou", 'c'));
+
+	return (0);
 }

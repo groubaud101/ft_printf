@@ -24,7 +24,7 @@ SRC_S	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
 			read_file split strcat strchr strcmp strcpy strdup strjoin \
 			strlcat strlcpy strlen strmapi strncat strncmp strncpy \
 			strnstr strrchr strstr strtrim sub substr tolower toupper \
-			strndup
+			strndup putnstr putnstr_fd
 
 SRCS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .c, $(SRC_S)))
 INCLUDE	=	$(addprefix $(DIR_H), $(INC))

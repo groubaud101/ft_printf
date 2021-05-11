@@ -11,12 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define CONV ptr->conv[ptr->num_conv]
-
-/*
-**     conv : c s p d i u x X %
-** num_conv : 0 1 2 3 4 5 6 7 8
-*/
+#include <stdlib.h>
 
 char	*ft_conv_c(va_list params)
 {
@@ -33,18 +28,27 @@ char	*ft_conv_c(va_list params)
 
 char	*ft_conv_s(va_list params)
 {
-	char *str;
+	const char *str;
 	
-	str = (char *)va_arg(params, char *);
+	str = (const char *)va_arg(params, const char *);
 	return (ft_strdup(str));
 }
 
 char	*ft_conv_p(va_list params)
 {
 	int	nb;
+	char			*str;
+	char			*res;
 
-	nb = (int)va_arg(params, int);
-	return (ft_itoa_base(nb, "0123456789"));
+	nb = (unsigned long long)va_arg(params, void *);
+	str = ft_itoa_base(nb, "0123456789abcdef");
+	if (!str)
+		return (NULL);
+	if (nb == 0)
+		return (str);
+	res = ft_strjoin("0x", str);
+	free(str);
+	return (res);
 }
 
 char	*ft_conv_d(va_list params)
@@ -65,27 +69,25 @@ char	*ft_conv_i(va_list params)
 
 char	*ft_conv_u(va_list params)
 {
-	int		nb;
+	unsigned int	nb;
 
-	nb = (int)va_arg(params, int);
-	if (nb < 0)
-		nb = -nb;
+	nb = (unsigned int)va_arg(params, unsigned int);
 	return (ft_itoa_base(nb, "0123456789"));	
 }
 
 char	*ft_conv_x(va_list params)
 {
-	int	nb;
+	unsigned int	nb;
 
-	nb = (int)va_arg(params, int);
+	nb = (unsigned int)va_arg(params, unsigned int);
 	return (ft_itoa_base(nb, "0123456789abcdef"));	
 }
 
 char	*ft_conv_xup(va_list params)
 {
-	int	nb;
+	unsigned int	nb;
 
-	nb = (int)va_arg(params, int);
+	nb = (unsigned int)va_arg(params, unsigned int);
 	return (ft_itoa_base(nb, "0123456789ABCDEF"));	
 }
 

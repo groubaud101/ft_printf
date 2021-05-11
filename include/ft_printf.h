@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include "libft.h"
+# include "ft_colors.h"
 # include <stdarg.h>
 
 #include <stdio.h>
@@ -30,6 +31,7 @@ typedef struct	s_printf
 	int		zero;
 	int		field;
 	int		precis;
+	int		explicit_precis;
 	char	*conv;
 	int		num_conv;
 	char	*patern;

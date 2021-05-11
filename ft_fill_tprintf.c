@@ -61,6 +61,9 @@ static int	ft_add_precis(t_printf *ptr, va_list params, const char *format,
 	if (format[len] == '.')
 	{
 		len++;
+		ptr->explicit_precis = 0;
+		if (format[len] == '*' || ft_isdigit(format[len])) // verifier que l'etoile est explicit
+			ptr->explicit_precis = 1;
 		if (format[len] == '*')
 		{
 			ptr->precis = (int)va_arg(params, int);
