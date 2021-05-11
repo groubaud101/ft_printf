@@ -15,7 +15,7 @@ NAME	=	libprintf.a
 DIR_S	=	./
 DIR_L	=	./libft/
 
-SRC_S	=	printf fill_tprintf free_tprintf \
+SRC_S	=	printf fill_tprintf free_tprintf conversion \
 			aff_tprintf
 
 INC		=	./include/

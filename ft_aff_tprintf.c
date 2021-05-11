@@ -13,6 +13,16 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
+#define BLACK "\033[0;30m"
+#define RED "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define YELLOW "\033[0;33m"
+#define BLUE "\033[0;34m"
+#define PURPLE "\033[0;35m"
+#define CYAN "\033[0;36m"
+#define WHITE "\033[0;37m"
+#define DEF "\033[0m"
+
 void	ft_aff_tprintf(t_printf *ptr)
 {
 	if (!ptr)
@@ -27,7 +37,7 @@ void	ft_aff_tprintf(t_printf *ptr)
 	printf("len_pat : %i\n", ptr->len_pat);
 	printf("minus : %i\n", ptr->minus);
 	printf("zero : %i\n", ptr->zero);
-	printf("field : %i\n", ptr->field);
-	printf("precis : %i\n", ptr->precis);
-	printf("result : |%s|\n\n", ptr->result);
+	printf(BLUE"field : %i\n"DEF, ptr->field);
+	printf(RED"precis : %i\n"DEF, ptr->precis);
+	printf(GREEN"result : |%s|\n\n"DEF, ptr->result);
 }

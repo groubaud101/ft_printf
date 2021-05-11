@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 #include <stdlib.h>
 
 // int integerValue = (int) va_arg( parametersInfos, int );
@@ -49,7 +48,6 @@ int	ft_printf(const char *format, ...)
 {
 	va_list 	params;
 	t_printf	*ptr;
-	int	i = 0;
 
 	va_start(params, format);
 	ptr = NULL;
@@ -58,45 +56,26 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			printf("caractere %i : %c\n", i++, *format);
 			ptr = ft_init_tprintf(ptr);
 			if (!ptr)
 				return (0);
-			ptr = ft_fill_tprintf(ptr, format);
+			ptr = ft_fill_tprintf(ptr, params, format);
 			if (!ptr)
 				return (0);
-			// ifs pour le type et redirection (what_is_your_kind)
-
-			// remplissage du result
 
 			// affichage du result
+			
 			if (ptr->conv[ptr->num_conv] != '%')
 			{
-				ft_putchar('\n');
-				ft_aff_tprintf(ptr);
+				ft_putstr(ptr->result);
+				// ft_aff_tprintf(ptr);
 			}
 			else
 				ft_putchar('%');
-
-			// if (*format == 'i')
-			// {
-			// 	int integerValue = (int)va_arg( params, int);
-			// 	ft_putnbr(integerValue);
-			// }
-			// else if (*format == 's')
-			// {
-			// 	char *str = (char *)va_arg(params, char *);
-			// 	ft_putstr(str);
-			// }
-			// else if (*format == 'c')
-			// {
-			// 	char c = (unsigned char)va_arg(params, int);
-			// 	ft_putchar(c);
-			// }
 			format+=ptr->len_pat;
 
 		}
-		// ft_putchar(*format);
+		ft_putchar(*format);
 		format++;
 	}
 	return (1);
