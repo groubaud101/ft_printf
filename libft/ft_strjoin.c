@@ -34,7 +34,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dest = (char *)ft_calloc(sizeof(*dest), dlen + 1);
 	if (!dest)
 		return (NULL);
-	ft_strlcat(dest, s1, len_s1 + 1);
-	ft_strlcat(dest, s2, dlen + 1);
+	ft_strcat(dest, s1);
+	ft_strcat(dest, s2);
 	return (dest);
 }

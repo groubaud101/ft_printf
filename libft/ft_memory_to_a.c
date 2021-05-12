@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tprintf.c                                  :+:      :+:    :+:   */
+/*   ft_memory_to_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 20:03:21 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/07 20:03:21 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/11 18:02:51 by groubaud          #+#    #+#             */
+/*   Updated: 2021/05/11 18:02:51 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdlib.h>
-
-int	ft_free_tprintf(t_printf *ptr)
+void	*ft_memory_to_a(void *addr, int size, const char *base)
 {
-	if (ptr)
-	{
-		if (ptr->patern)
-		{
-			free(ptr->patern);
-			ptr->patern = NULL;
-		}
-		if (ptr->result)
-		{
-			free(ptr->result);
-			ptr->result = NULL;	
-		}
-		free(ptr);
-		ptr = NULL;
-	}
-	return (-1);
+	size++;
+	base++;
+	return (addr);
 }

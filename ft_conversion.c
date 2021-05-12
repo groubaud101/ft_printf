@@ -34,21 +34,24 @@ char	*ft_conv_s(va_list params)
 	return (ft_strdup(str));
 }
 
-char	*ft_conv_p(va_list params)
+char	*ft_conv_p(va_list params) // penser qu'un ptr null affiche (nil)
 {
-	int	nb;
+	unsigned long	nb;
 	char			*str;
-	char			*res;
+	char			*nbr;
 
-	nb = (unsigned long long)va_arg(params, void *);
-	str = ft_itoa_base(nb, "0123456789abcdef");
-	if (!str)
-		return (NULL);
+	nb = (unsigned long)va_arg(params, void *);
 	if (nb == 0)
-		return (str);
-	res = ft_strjoin("0x", str);
-	free(str);
-	return (res);
+	{
+		//free(nbr);
+		return (ft_strdup("(nil)"));
+	}
+	nbr = ft_u_ltoa_base(nb, "0123456789abcdef");
+	if (!nbr)
+		return (NULL);
+	str = ft_strjoin("0x", nbr);
+	free(nbr);	
+	return (str);
 }
 
 char	*ft_conv_d(va_list params)
@@ -72,7 +75,7 @@ char	*ft_conv_u(va_list params)
 	unsigned int	nb;
 
 	nb = (unsigned int)va_arg(params, unsigned int);
-	return (ft_itoa_base(nb, "0123456789"));	
+	return (ft_u_itoa_base(nb, "0123456789"));	
 }
 
 char	*ft_conv_x(va_list params)
@@ -80,7 +83,7 @@ char	*ft_conv_x(va_list params)
 	unsigned int	nb;
 
 	nb = (unsigned int)va_arg(params, unsigned int);
-	return (ft_itoa_base(nb, "0123456789abcdef"));	
+	return (ft_u_itoa_base(nb, "0123456789abcdef"));	
 }
 
 char	*ft_conv_xup(va_list params)
@@ -88,7 +91,7 @@ char	*ft_conv_xup(va_list params)
 	unsigned int	nb;
 
 	nb = (unsigned int)va_arg(params, unsigned int);
-	return (ft_itoa_base(nb, "0123456789ABCDEF"));	
+	return (ft_u_itoa_base(nb, "0123456789ABCDEF"));	
 }
 
 char 	*ft_conversion(t_printf *ptr, va_list params)

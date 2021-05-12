@@ -29,5 +29,5 @@ void	ft_aff_tprintf(t_printf *ptr)
 	printf("zero : %i\n", ptr->zero);
 	printf(BLUE"field : %i\n"DEF, ptr->field);
 	printf(RED"precis : %i\n"DEF, ptr->precis);
-	printf(GREEN"result : |%s|\n\n"DEF, ptr->result);
+	printf(GREEN"result : |%s|\n"DEF"\n", ptr->result);
 }

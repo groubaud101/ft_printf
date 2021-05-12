@@ -12,6 +12,39 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+void	test01(void)
+{
+	char	*ptr;
+	char	*ptr2;
+
+	ptr = NULL;
+	ptr2 = malloc(10);
+	printf("ori ret : %i\n\n", printf("ori\nptr : |%p| ptr2 : |%p|\n",
+				ptr, ptr2));
+	printf("ft_ ret : %i\n", ft_printf("ft_\nptr : |%p| ptr2 : |%p|\n",
+				ptr, ptr2));
+
+}
+
+// plante pour double free
+void	test02(void)
+{
+	printf("ori ret : %i\n\n", printf("ori\n42 : -X : |%X| -X : |%X|\n",
+				-42, -42));
+	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : -X : |%X| -X : |%X|\n",
+				-42, -42));
+}
+
+void	test03(void)
+{
+	printf("ori ret : %i\n\n", printf("ori\n42 : X : |%X| X : |%X| X : |%X|\n",
+				42, 42, 42));
+	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : X : |%X| X : |%X| X : |%X|\n",
+				42, 42, 42));
+}
+
 
 int		main()
 {
@@ -31,10 +64,15 @@ int		main()
 	// 			42, "coucou", 'c'));
 	// printf("ft_ ret : %i\n", ft_printf("ft_\n42 : |%i| coucou : |%s| c : |%c|\n",
 	// 			42, "coucou", 'c'));
-	printf("ori ret : %i\n\n", printf("ori\n42 : |%i|\n",
-				42, "coucou", 'c'));
-	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : |%i|\n",
-				42, "coucou", 'c'));
+
+	// a faire ft_memory_to_a
+
+	// printf("ori ret : %i\n\n", printf("ori\n-42 : u : |%u| x : |%x| X : |%X|\n",
+	// 			-42, -42, -42));
+	// printf("ft_ ret : %i\n", ft_printf("ft_\n-42 : u : |%u| x : |%x| X : |%X|\n",
+	// 			-42, -42, -42));
+
+	test01();
 
 	return (0);
 }

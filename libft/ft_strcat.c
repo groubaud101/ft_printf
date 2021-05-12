@@ -20,9 +20,7 @@ char	*ft_strcat(char *dst, const char *src)
 	d = ft_strlen(dst);
 	s = 0;
 	while (src[s])
-	{
 		dst[d++] = src[s++];
-	}
 	dst[d] = '\0';
 	return (dst);
 }

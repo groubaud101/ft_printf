@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 // int integerValue = (int) va_arg( parametersInfos, int );
 
@@ -19,19 +20,23 @@ static t_printf	*ft_init_tprintf(t_printf *ptr)
 {
 	if (ptr == NULL)
 	{
-		ptr = (t_printf *)malloc(sizeof(*ptr));
+		ptr = (t_printf *)malloc(sizeof(t_printf));
 		if (!ptr)
 			return (NULL);
-		ptr->flag = "-0";
-		ptr->conv = "cspdiuxX%";
 	}
-	else
-	{
-		if (ptr->patern)
-			free(ptr->patern);
-		if (ptr->result)
-			free(ptr->result);
-	}
+	// else
+	// {
+	// 	if (ptr->patern)
+	// 		free(ptr->patern);
+	// 	if (ptr->result)
+	// 	{
+	// 		printf("lets crash\n");
+	// 		free(ptr->result);
+	// 		printf("you lost the game\n");
+	// 	}
+	// }
+	ptr->flag = "-0";
+	ptr->conv = "cspdiuxX%";
 	ptr->minus = -1;
 	ptr->zero = -1;
 	ptr->field = -1;
@@ -52,7 +57,7 @@ static const char	*ft_aff_format(const char *format)
 	i = 0;
 	while (format[i] && format[i] != '%')
 		i++;
-	ft_putnstr((char *)format, i);
+	write(1, (char *)format, i);
 	return (format + i);
 }
 
@@ -63,26 +68,24 @@ int	ft_printf(const char *format, ...)
 	int			ret;
 
 	va_start(params, format);
-	ptr = NULL;
 	ret = ft_strlen(format);
+	ptr = NULL;
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
 			ptr = ft_init_tprintf(ptr);
-			if (!ptr)
-				return (-1);
-			ptr = ft_fill_tprintf(ptr, params, format);
-			if (!ptr)
-				return (-1);
 
+			if (ft_fill_tprintf(ptr, params, format) == -1)
+				return (-1);
 			// affichage du result + count du nb de catactere affiché
 			if (ptr->conv[ptr->num_conv] != '%')
 			{
 				// ret = ft_aff_result(ptr);
-				ft_putstr(ptr->result);
 				// ft_aff_tprintf(ptr);
+				ft_putstr(ptr->result);
+
 			}
 			else
 				ft_putchar('%');

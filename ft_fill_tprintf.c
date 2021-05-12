@@ -96,21 +96,20 @@ static int	ft_paternlen(t_printf *ptr, va_list params, const char *format)
 }
 
 
-t_printf	*ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)
+int	ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)
 {
 	ptr->len_pat = ft_paternlen(ptr, params, format);
-	if (ptr->len_pat == -1)
-	{
-		ft_free_tprintf(ptr);
-		return (NULL);
-	}
+	// if (ptr->len_pat == -1)
+	// 	return (ft_free_tprintf(ptr));
 
 	ptr->patern = ft_strndup(format, ptr->len_pat);
-	if (!(ptr->patern))
-		return (NULL);
+	// if (!(ptr->patern))
+	// 	return (ft_free_tprintf(ptr));
 
 	ptr->result = ft_conversion(ptr, params);
+	// if (!(ptr->result))
+	// 	return (ft_free_tprintf(ptr));
 
 
-	return (ptr);
+	return (0);
 }
