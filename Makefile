@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/29 12:21:57 by groubaud          #+#    #+#              #
-#    Updated: 2021/04/29 12:21:57 by groubaud         ###   ########.fr        #
+#    Updated: 2021/05/12 18:03:27 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ test	:	all
 lib		:
 			make -C $(DIR_L) all
 			cp $(DIR_L)libft.a $(NAME)
+			cp $(DIR_L)libft.h $(INC)
+
 
 .c.o	:	$(SRCS)
 			$(CC) -I$(INC) $(CFLAGS) -c -o $@ $<

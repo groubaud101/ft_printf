@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:13:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:13:42 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:46:32 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	ft_copy(t_read **start, char *buf, int fd)
 
 	tmp = *start;
 	size = tmp->rd;
+	rd = 1;
 	while (rd > 0)
 	{
 		rd = (read(fd, buf, BUFF));

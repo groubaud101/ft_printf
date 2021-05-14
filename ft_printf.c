@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 13:03:58 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/29 13:03:59 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:49:36 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,13 @@ static t_printf	*ft_init_tprintf(t_printf *ptr)
 		if (!ptr)
 			return (NULL);
 	}
-	// else
-	// {
-	// 	if (ptr->patern)
-	// 		free(ptr->patern);
-	// 	if (ptr->result)
-	// 	{
-	// 		printf("lets crash\n");
-	// 		free(ptr->result);
-	// 		printf("you lost the game\n");
-	// 	}
-	// }
+	else
+	{
+		if (ptr->patern)
+	 		free(ptr->patern);
+	 	if (ptr->result)
+	 		free(ptr->result);
+	}
 	ptr->flag = "-0";
 	ptr->conv = "cspdiuxX%";
 	ptr->minus = -1;

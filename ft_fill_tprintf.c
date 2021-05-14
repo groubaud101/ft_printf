@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:04:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/05 14:04:22 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:50:17 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,16 @@ static int	ft_paternlen(t_printf *ptr, va_list params, const char *format)
 int	ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)
 {
 	ptr->len_pat = ft_paternlen(ptr, params, format);
-	// if (ptr->len_pat == -1)
-	// 	return (ft_free_tprintf(ptr));
+	if (ptr->len_pat == -1)
+		return (ft_free_tprintf(ptr));
 
 	ptr->patern = ft_strndup(format, ptr->len_pat);
-	// if (!(ptr->patern))
-	// 	return (ft_free_tprintf(ptr));
+	if (!(ptr->patern))
+		return (ft_free_tprintf(ptr));
 
 	ptr->result = ft_conversion(ptr, params);
-	// if (!(ptr->result))
-	// 	return (ft_free_tprintf(ptr));
+	if (!(ptr->result))
+		return (ft_free_tprintf(ptr));
 
 
 	return (0);

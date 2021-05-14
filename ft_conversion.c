@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:45:56 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/11 12:45:56 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:07:05 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,12 @@ char	*ft_conv_s(va_list params)
 
 char	*ft_conv_p(va_list params) // penser qu'un ptr null affiche (nil)
 {
-	unsigned long	nb;
+	unsigned long long	nb;
 	char			*str;
 	char			*nbr;
 
-	nb = (unsigned long)va_arg(params, void *);
-	if (nb == 0)
-	{
-		//free(nbr);
-		return (ft_strdup("(nil)"));
-	}
-	nbr = ft_u_ltoa_base(nb, "0123456789abcdef");
+	nb = (unsigned long long)va_arg(params, void *);
+	nbr = ft_u_lltoa_base(nb, "0123456789abcdef");
 	if (!nbr)
 		return (NULL);
 	str = ft_strjoin("0x", nbr);

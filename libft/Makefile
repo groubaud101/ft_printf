@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/01 17:22:08 by groubaud          #+#    #+#              #
-#    Updated: 2021/04/01 17:22:08 by groubaud         ###   ########.fr        #
+#    Updated: 2021/05/12 17:58:14 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_S	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
 			read_file split strcat strchr strcmp strcpy strdup strjoin \
 			strlcat strlcpy strlen strmapi strncat strncmp strncpy \
 			strnstr strrchr strstr strtrim sub substr tolower toupper \
-			strndup putnstr putnstr_fd memory_to_a u_itoa_base u_ltoa_base
+			strndup putnstr putnstr_fd memory_to_a u_itoa_base u_ltoa_base \
+			u_lltoa_base
 
 SRCS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .c, $(SRC_S)))
 INCLUDE	=	$(addprefix $(DIR_H), $(INC))

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:14:10 by groubaud          #+#    #+#             */
-/*   Updated: 2021/04/16 20:14:10 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:59:16 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,15 @@ size_t	ft_strlen(const char *s);
 
 int		ft_nbrlen_base(int n, int len_base);
 int		ft_u_intlen_base(unsigned int n, int len_base);
-int		ft_u_longlen_base(unsigned int n, int len_base);
+int		ft_u_longlen_base(unsigned long n, int len_base);
+int		ft_u_longlonglen_base(unsigned long long n, int len_base);
 int		ft_atoi(const char *nptr);
 int		ft_atoi_base(const char *nptr, const char *base);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(int n, char *base);
 char	*ft_u_itoa_base(unsigned int n, char *base);
 char	*ft_u_ltoa_base(unsigned long n, char *base);
+char	*ft_u_lltoa_base(unsigned long long n, char *base);
 void	*ft_memory_to_a(void *addr, int size, const char *base);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/11 10:57:40 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:09:58 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	test01(void)
 
 	ptr = NULL;
 	ptr2 = malloc(10);
-	printf("ori ret : %i\n\n", printf("ori\nptr : |%p| ptr2 : |%p|\n",
+	printf("ori ret : %i\n", printf(RED"ori\nptr : |%p| ptr2 : |%p|\n"DEF,
 				ptr, ptr2));
-	printf("ft_ ret : %i\n", ft_printf("ft_\nptr : |%p| ptr2 : |%p|\n",
+	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\nptr : |%p| ptr2 : |%p|\n"DEF,
 				ptr, ptr2));
 
 }
@@ -31,17 +31,17 @@ void	test01(void)
 // plante pour double free
 void	test02(void)
 {
-	printf("ori ret : %i\n\n", printf("ori\n42 : -X : |%X| -X : |%X|\n",
+	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -X : |%X|\n"DEF,
 				-42, -42));
-	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : -X : |%X| -X : |%X|\n",
+	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -X : |%X|\n"DEF,
 				-42, -42));
 }
 
 void	test03(void)
 {
-	printf("ori ret : %i\n\n", printf("ori\n42 : X : |%X| X : |%X| X : |%X|\n",
+	printf("ori ret : %i\n", printf(RED"ori\n42 : X : |%X| X : |%X| X : |%X|\n"DEF,
 				42, 42, 42));
-	printf("ft_ ret : %i\n", ft_printf("ft_\n42 : X : |%X| X : |%X| X : |%X|\n",
+	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : X : |%X| X : |%X| X : |%X|\n"DEF,
 				42, 42, 42));
 }
 
@@ -73,6 +73,8 @@ int		main()
 	// 			-42, -42, -42));
 
 	test01();
+	test02();
+	test03();
 
 	return (0);
 }
