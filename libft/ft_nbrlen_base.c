@@ -14,8 +14,8 @@ int	ft_u_intlen_base(unsigned int n, int len_base)
 {
 	int	len;
 
-	len = 0;
-	while (n > 0)
+	len = 1;
+	while (n > (unsigned int)len_base)
 	{
 		n = n / len_base;
 		len++;
@@ -27,8 +27,8 @@ int	ft_u_longlen_base(unsigned long n, int len_base)
 {
 	int	len;
 
-	len = 0;
-	while (n > 0)
+	len = 1;
+	while (n > (unsigned long)len_base)
 	{
 		n = n / len_base;
 		len++;
@@ -40,8 +40,8 @@ int	ft_u_longlonglen_base(unsigned long long n, int len_base)
 {
 	int	len;
 
-	len = 0;
-	while (n > 0)
+	len = 1;
+	while (n > (unsigned long long)len_base)
 	{
 		n = n / len_base;
 		len++;
@@ -54,7 +54,7 @@ int	ft_nbrlen_base(int n, int len_base)
 	int	len;
 
 	len = 0;
-	if (n < 0)
+	if (n <= 0)
 		len++;
 	while (n != 0)
 	{

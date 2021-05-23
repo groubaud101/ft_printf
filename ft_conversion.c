@@ -76,17 +76,23 @@ char	*ft_conv_u(va_list params)
 char	*ft_conv_x(va_list params)
 {
 	unsigned int	nb;
+	char			*nbr;
 
 	nb = (unsigned int)va_arg(params, unsigned int);
-	return (ft_u_itoa_base(nb, "0123456789abcdef"));	
+	nbr = ft_u_itoa_base(nb, "0123456789abcdef");
+	printf("len nbr : %li, len nb : %i\n", ft_strlen(nbr), ft_u_intlen_base(nb, 16));
+	return (nbr);
 }
 
 char	*ft_conv_xup(va_list params)
 {
 	unsigned int	nb;
+	char			*nbr;
 
 	nb = (unsigned int)va_arg(params, unsigned int);
-	return (ft_u_itoa_base(nb, "0123456789ABCDEF"));	
+	nbr = ft_u_itoa_base(nb, "0123456789ABCDEF");
+	printf("len nbr : %li, len nb : %i\n", ft_strlen(nbr), ft_u_intlen_base(nb, 16));
+	return (nbr);
 }
 
 char 	*ft_conversion(t_printf *ptr, va_list params)

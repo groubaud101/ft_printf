@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_u_ltoa_base.c                                   :+:      :+:    :+:   */
+/*   ft_u_lltoa_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 18:57:53 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/12 18:01:30 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/23 20:21:35 by groubaud          #+#    #+#             */
+/*   Updated: 2021/05/23 20:21:35 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ char	*ft_u_lltoa_base(unsigned long long n, char *base)
 	int		len_nbr;
 	char	*nbr;
 
-	if (n == 0)
-		return (ft_strdup("0"));
 	len_nbr = ft_u_longlonglen_base(n, ft_strlen(base));
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)

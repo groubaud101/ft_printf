@@ -25,8 +25,6 @@ char	*ft_u_itoa_base(unsigned int n, char *base)
 	int		len_nbr;
 	char	*nbr;
 
-	if (n == 0)
-		return (ft_strdup("0"));
 	len_nbr = ft_u_intlen_base(n, ft_strlen(base));
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)

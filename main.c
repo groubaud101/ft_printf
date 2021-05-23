@@ -31,9 +31,9 @@ void	test01(void)
 // plante pour double free
 void	test02(void)
 {
-	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -X : |%X|\n"DEF,
+	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -x : |%x|\n"DEF,
 				-42, -42));
-	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -X : |%X|\n"DEF,
+	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -x : |%x|\n"DEF,
 				-42, -42));
 }
 
@@ -72,9 +72,9 @@ int		main()
 	// printf("ft_ ret : %i\n", ft_printf("ft_\n-42 : u : |%u| x : |%x| X : |%X|\n",
 	// 			-42, -42, -42));
 
-	test01();
+	// test01();
 	test02();
-	test03();
+	// test03();
 
 	return (0);
 }
