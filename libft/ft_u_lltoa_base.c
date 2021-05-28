@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-static char	*ft_rec_u_lltoa_base(unsigned long long n, char *nbr, int i, char *base)
+static char	*ft_rec_u_lltoa_base(unsigned long long n, char *nbr, int i,
+								char *base)
 {
 	if (n > 9)
 		nbr = ft_rec_u_lltoa_base(n / ft_strlen(base), nbr, i - 1, base);

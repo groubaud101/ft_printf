@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_u_intlen_base(unsigned int n, int len_base)
+int	ft_len_uint_base(unsigned int n, int len_base)
 {
 	int	len;
 
@@ -23,7 +23,7 @@ int	ft_u_intlen_base(unsigned int n, int len_base)
 	return (len);
 }
 
-int	ft_u_longlen_base(unsigned long n, int len_base)
+int	ft_len_ulong_base(unsigned long n, int len_base)
 {
 	int	len;
 
@@ -36,7 +36,7 @@ int	ft_u_longlen_base(unsigned long n, int len_base)
 	return (len);
 }
 
-int	ft_u_longlonglen_base(unsigned long long n, int len_base)
+int	ft_len_ulonglong_base(unsigned long long n, int len_base)
 {
 	int	len;
 
