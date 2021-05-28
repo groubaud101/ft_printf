@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr.c                                       :+:      :+:    :+:   */
+/*   ft_put_uchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 15:25:13 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/11 15:25:13 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/28 22:36:15 by groubaud          #+#    #+#             */
+/*   Updated: 2021/05/28 22:36:15 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "unistd.h"
 
-void	ft_putnstr(const char *str, int n)
+void	ft_put_uchar(unsigned char c)
 {
-	ft_putnstr_fd(str, 1, n);
+	if (c)
+		write(1, &c, 1);
 }

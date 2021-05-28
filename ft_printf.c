@@ -24,16 +24,6 @@ static t_printf	*ft_init_tprintf(t_printf *ptr)
 		if (!ptr)
 			return (NULL);
 	}
-	else
-	{
-		printf(YELLOW"\npat : |%s|\n", ptr->patern);
-		if (ptr->patern)
-	 		free(ptr->patern);
-		//printf("TR result : |%s| |%p|\n", ptr->result, ptr->result);
-	 	if (ptr->result)
-	 		free(ptr->result);
-		printf("COUCOU\n");
-	}
 	ptr->flag = "-0";
 	ptr->conv = "cspdiuxX%";
 	ptr->minus = -1;
@@ -42,14 +32,12 @@ static t_printf	*ft_init_tprintf(t_printf *ptr)
 	ptr->precis = -1;
 	ptr->explicit_precis = -1;
 	ptr->num_conv = -1;
-	ptr->patern = NULL;
 	ptr->len_pat = -1;
-	ptr->result = NULL;
-	ptr->len_res = -1;
+	ptr->ret = -1;
 	return (ptr);
 }
 
-static const char	*ft_aff_format(const char *format)
+static const char	*ft_aff_format(t_printf *ptr, const char *format)
 {
 	int	i;
 
@@ -57,6 +45,7 @@ static const char	*ft_aff_format(const char *format)
 	while (format[i] && format[i] != '%')
 		i++;
 	write(1, (char *)format, i);
+	ptr->ret += i;
 	return (format + i);
 }
 
@@ -64,10 +53,8 @@ int	ft_printf(const char *format, ...)
 {
 	va_list 	params;
 	t_printf	*ptr;
-	int			ret;
 
 	va_start(params, format);
-	ret = ft_strlen(format);
 	ptr = NULL;
 	while (*format)
 	{
@@ -75,25 +62,22 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			ptr = ft_init_tprintf(ptr);
-			printf("UN result : |%s| |%p|\n", ptr->result, ptr->result);
 			if (ft_fill_tprintf(ptr, params, format) == -1)
 				return (-1);
-			printf("DE result : |%s| |%p|\n", ptr->result, ptr->result);
-			// affichage du result + count du nb de catactere affiché
 			if (ptr->conv[ptr->num_conv] != '%')
 			{
-				// ret = ft_aff_result(ptr);
-				// ft_aff_tprintf(ptr);
-				ft_putstr(ptr->result);
-
+				ft_conversion(ptr, params);
+				if (ptr->ret == -1) // faudra tester les différentes erreurs, voir si ca continue
+					return (-1); // faudra un message d'erreur
 			}
 			else
 				ft_putchar('%');
-			ret = ret - (ptr->len_pat + 1) + ft_strlen(ptr->result);
-
+			
 			format += ptr->len_pat;
+			free(ptr);
 		}
-		format = ft_aff_format(format);
+		format = ft_aff_format(ptr, format);
 	}
-	return (ret);
+	va_end(params);
+	return (ptr->ret);
 }

@@ -49,7 +49,7 @@ int	ft_len_ulonglong_base(unsigned long long n, int len_base)
 	return (len);
 }
 
-int	ft_nbrlen_base(int n, int len_base)
+int	ft_len_int_base(int n, int len_base)
 {
 	int	len;
 

@@ -27,7 +27,7 @@ char	*ft_itoa(int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	len_nbr = ft_nbrlen_base(n, 10);
+	len_nbr = ft_len_int_base(n, 10);
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)
 		return (NULL);

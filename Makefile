@@ -15,22 +15,38 @@ NAME	=	libprintf.a
 DIR_S	=	./
 DIR_L	=	./libft/
 
-SRC_S	=	printf fill_tprintf free_tprintf conversion \
-			aff_tprintf
+SLIB	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
+			isdigit isinstr isprint isspace itoa_base itoa lst_read \
+			lstadd_back lstadd_front lstclear lstdelone lstiter lstlast \
+			lstmap lstnew lstsize memccpy memchr memcmp memcpy memmove \
+			memset mod mult nbrlen_base putchar_fd putchar putendl_fd \
+			putendl putnbr_fd putnbr putstr_fd putstr puttab_fd puttab \
+			read_file split strcat strchr strcmp strcpy strdup strjoin \
+			strlcat strlcpy strlen strmapi strncat strncmp strncpy \
+			strnstr strrchr strstr strtrim sub substr tolower toupper \
+			strndup putnstr putnstr_fd u_itoa_base u_ltoa_base \
+			u_lltoa_base put_int put_uint put_ulong put_ulonglong the_max \
+			the_min put_uchar
+
+SPRINTF	=	printf fill_tprintf free_tprintf conversion_csp \
+			aff_tprintf conversion_diuxx aff
 
 INC		=	./include/
+H_INC	=	libft ft_colors ft_printf
+INCLUDE	=	$(addprefix $(INC), $(addsuffix .h, $(H_INC)))
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .c, $(SRC_S)))
-OBJS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SRC_S)))
+SRCS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .c, $(SPRINTF))) \
+			$(addprefix $(DIR_L)ft_, $(addsuffix .c, $(SLIB)))
+
+OBJS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SPRINTF))) \
+			$(addprefix $(DIR_L)ft_, $(addsuffix .o, $(SLIB)))
 
 AR		=	ar rcs
 
-LIB		=	-L $(DIR_L) -lft
 LIB_P	=	-L $(DIR_S) -lprintf
-
 TEST	=	-I $(INC) main.c
 
 ## commande
@@ -43,16 +59,10 @@ test	:	all
 			@./exec
 			@rm -rf exec
 
-lib		:
-			make -C $(DIR_L) all
-			cp $(DIR_L)libft.a $(NAME)
-			cp $(DIR_L)libft.h $(INC)
-
-
 .c.o	:	$(SRCS)
 			$(CC) -I$(INC) $(CFLAGS) -c -o $@ $<
 
-$(NAME)	:	$(OBJS) $(INC)ft_printf.h
+$(NAME)	:	$(OBJS) $(INCLUDE)
 			$(AR) $@ $(OBJS)
 
 clean	:
@@ -61,12 +71,6 @@ clean	:
 fclean	:	clean
 			rm -rf $(NAME)
 
-clean_l	:
-			make -C $(DIR_L) clean
-
-fclean_l:
-			make -C $(DIR_L) fclean
-
-re		:	fclean lib all
+re		:	fclean all
 
 .PHONY	:	all clean fclean re

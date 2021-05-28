@@ -25,7 +25,7 @@ char	*ft_itoa_base(int n, char *base)
 	int		len_nbr;
 	char	*nbr;
 
-	len_nbr = ft_nbrlen_base(n, ft_strlen(base));
+	len_nbr = ft_len_int_base(n, ft_strlen(base));
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)
 		return (NULL);

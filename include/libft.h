@@ -95,10 +95,10 @@ size_t	ft_strlen(const char *s);
 ** I AM THE NUMBER
 */
 
-int		ft_nbrlen_base(int n, int len_base);
-int		ft_u_intlen_base(unsigned int n, int len_base);
-int		ft_u_longlen_base(unsigned long n, int len_base);
-int		ft_u_longlonglen_base(unsigned long long n, int len_base);
+int		ft_len_int_base(int n, int len_base);
+int		ft_len_uint_base(unsigned int n, int len_base);
+int		ft_len_ulong_base(unsigned long n, int len_base);
+int		ft_len_ulonglong_base(unsigned long long n, int len_base);
 int		ft_atoi(const char *nptr);
 int		ft_atoi_base(const char *nptr, const char *base);
 char	*ft_itoa(int n);
@@ -107,6 +107,8 @@ char	*ft_u_itoa_base(unsigned int n, char *base);
 char	*ft_u_ltoa_base(unsigned long n, char *base);
 char	*ft_u_lltoa_base(unsigned long long n, char *base);
 void	*ft_memory_to_a(void *addr, int size, const char *base);
+int		ft_the_max(int size, ...);
+int		ft_the_min(int size, ...);
 
 /*
 ** Math
@@ -144,14 +146,25 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int nb, char c));
 
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr(char *s);
-void	ft_putnstr(char *str, int n);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnstr_fd(char *str, int fd, int n);
+void	ft_put_uchar(unsigned char c);
+void	ft_put_uchar(unsigned char c);
+void	ft_put_uchar_fd(unsigned char c, int fd);
+void	ft_putstr(const char *s);
+void	ft_putnstr(const char *str, int n);
+void	ft_putstr_fd(const char *s, int fd);
+void	ft_putnstr_fd(const char *str, int fd, int n);
 void	ft_putendl(char *s);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr(int n);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_put_int_base(int n, const char *base);
+void	ft_put_int_base_fd(int n, const char *base, int fd);
+void	ft_put_uint_base(unsigned int n, const char *base);
+void	ft_put_uint_base_fd(unsigned int n, const char *base, int fd);
+void	ft_put_ulong_base(unsigned long n, const char *base);
+void	ft_put_ulong_base_fd(unsigned long n, const char *base, int fd);
+void	ft_put_ulonglong_base(unsigned long long n, const char *base);
+void	ft_put_ulonglong_base_fd(unsigned long long n, const char *base, int fd);
 void	ft_puttab(char **tab, char *sep);
 void	ft_puttab_fd(char **tab, char *sep, int fd);
 

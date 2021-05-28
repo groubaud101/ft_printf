@@ -34,10 +34,8 @@ typedef struct	s_printf
 	int		explicit_precis;
 	char	*conv;
 	int		num_conv;
-	char	*patern;
 	int		len_pat;
-	char	*result;
-	int		len_res;
+	int		ret;
 }t_printf;
 
 void	ft_aff_tprintf(t_printf *ptr);
@@ -45,6 +43,13 @@ void	ft_aff_tprintf(t_printf *ptr);
 int		ft_printf(const char *format, ...);
 int		ft_fill_tprintf(t_printf *ptr, va_list params, const char *format);
 int		ft_free_tprintf(t_printf *ptr);
-char 	*ft_conversion(t_printf *ptr, va_list params);
+
+int		ft_conversion(t_printf *ptr, va_list params);
+int		ft_aff_diuxx(t_printf *ptr, int len);
+int		ft_aff_p(t_printf *ptr, int len, unsigned long long n);
+int		ft_conv_di(t_printf *ptr, va_list params);
+int		ft_conv_u(t_printf *ptr, va_list params);
+int		ft_conv_x(t_printf *ptr, va_list params);
+int		ft_conv_xup(t_printf *ptr, va_list params);
 
 #endif

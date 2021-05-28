@@ -16,19 +16,7 @@
 int	ft_free_tprintf(t_printf *ptr)
 {
 	if (ptr)
-	{
-		if (ptr->patern)
-		{
-			//free(ptr->patern);
-			ptr->patern = NULL;
-		}
-		if (ptr->result)
-		{
-			//free(ptr->result);
-			ptr->result = NULL;	
-		}
-		//free(ptr);
-		ptr = NULL;
-	}
+		free(ptr);
+	ptr = NULL;
 	return (-1);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_int_base_fd.c                               :+:      :+:    :+:   */
+/*   ft_the_min.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 14:58:27 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/25 14:58:27 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/28 21:45:28 by groubaud          #+#    #+#             */
+/*   Updated: 2021/05/28 21:45:28 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdarg.h>
 
-static void	ft_rec_put_int_base_fd(int n, const char *base, int len, int fd)
+int	ft_the_min(int size, ...)
 {
-	if (n >= len || n <= -len)
-		ft_rec_put_int_base_fd(n / len, base, len, fd);
-	if (n > -len && n < 0)
-		ft_putchar_fd('-', fd);
-	ft_putchar_fd(base[ft_abs(n % len)] + '0', fd);
-}
+	va_list 	numbers;
+	int			min;
+	int			nb;
+	int			i;
 
-void	ft_put_int_base_fd(int n, const char *base, int fd)
-{
-	ft_rec_put_int_base_fd(n, base, ft_strlen(base), fd);
+	i = 1;
+	va_start(numbers, size);
+	min = (int)va_arg(numbers, int);
+	while (i < size)
+	{
+		nb = (int)va_arg(numbers, int);
+		if (min > nb)
+			min = nb;
+		i++;
+	}
+	va_end(numbers);
+	return (min);
 }

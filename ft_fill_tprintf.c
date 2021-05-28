@@ -17,99 +17,70 @@
 ** patern : %[flags][field width][precision]conversion
 */
 
-static int	ft_add_flag(t_printf *ptr, const char *format)
+static void	ft_add_flag(t_printf *ptr, const char *format)
 {
-	int	len;
-
-	len = 0;
-	while (format[len] && ft_isinstr(format[len], ptr->flag) >= 0)
+	while (format[ptr->len_pat] && ft_isinstr(format[ptr->len_pat], ptr->flag) >= 0)
 	{
-		if (format[len] == '-')
+		if (format[ptr->len_pat] == '-')
 			ptr->minus = 1;
-		else if (format[len] == '0')
+		else if (format[ptr->len_pat] == '0')
 			ptr->zero = 1;
-		len++;
+		ptr->len_pat++;
 	}
 	if (ptr->minus == 1)
 		ptr->zero = 0;
-	return (len);
 }
 
-static int	ft_add_field(t_printf *ptr, va_list params, const char *format,
-						int len)
+static void	ft_add_field(t_printf *ptr, va_list params, const char *format)
 {
-	if (ft_isdigit(format[len]) == 1 || format[len] == '*')
+	if (ft_isdigit(format[ptr->len_pat]) == 1 || format[ptr->len_pat] == '*')
 	{
-		if (ft_isdigit(format[len]) == 1)
+		if (ft_isdigit(format[ptr->len_pat]) == 1)
 		{
-			ptr->field = ft_atoi(format + len); // comment gere t on l'overflow ?
-			while (ft_isdigit(format[len]) == 1)
-				len++;
+			ptr->field = ft_atoi(format + ptr->len_pat); // comment gere t on l'overflow ?
+			while (ft_isdigit(format[ptr->len_pat]) == 1)
+				ptr->len_pat++;
 		}
 		else
 		{
 			ptr->field = (int)va_arg(params, int);
-			len++;
+			ptr->len_pat++;
 		}
 	}
-	return (len);
 }
 
-static int	ft_add_precis(t_printf *ptr, va_list params, const char *format,
-						int len)
+static void	ft_add_precis(t_printf *ptr, va_list params, const char *format)
 {
-	if (format[len] == '.')
+	if (format[ptr->len_pat] == '.')
 	{
-		len++;
+		ptr->len_pat++;
 		ptr->explicit_precis = 0;
-		if (format[len] == '*' || ft_isdigit(format[len])) // verifier que l'etoile est explicit
+		if (format[ptr->len_pat] == '*' || ft_isdigit(format[ptr->len_pat])) // verifier que l'etoile est explicit
 			ptr->explicit_precis = 1;
-		if (format[len] == '*')
+		if (format[ptr->len_pat] == '*')
 		{
 			ptr->precis = (int)va_arg(params, int);
-			len++;
+			ptr->len_pat++;
 		}
 		else
 		{
-			ptr->precis = ft_atoi(format + len); // comment gere t on l'overflow ?
-			while (ft_isdigit(format[len]) == 1)
-				len++;			
+			ptr->precis = ft_atoi(format + ptr->len_pat); // comment gere t on l'overflow ?
+			while (ft_isdigit(format[ptr->len_pat]) == 1)
+				ptr->len_pat++;
 		}
 	}
-	return (len);
 }
-
-static int	ft_paternlen(t_printf *ptr, va_list params, const char *format)
-{
-	int	len;
-
-	len = ft_add_flag(ptr, format);
-
-	len = ft_add_field(ptr, params, format, len);
-
-	len = ft_add_precis(ptr, params, format, len);
-
-	ptr->num_conv = ft_isinstr(format[len], ptr->conv);
-	if (ptr->num_conv >= 0)
-		return (len + 1);
-	return (-1);
-}
-
 
 int	ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)
 {
-	ptr->len_pat = ft_paternlen(ptr, params, format);
-	// if (ptr->len_pat == -1)
-	// 	return (ft_free_tprintf(ptr));
-
-	ptr->patern = ft_strndup(format, ptr->len_pat);
-	// if (!(ptr->patern))
-	// 	return (ft_free_tprintf(ptr));
-
-	ptr->result = ft_conversion(ptr, params);
-	// if (!(ptr->result))
-	// 	return (ft_free_tprintf(ptr));
-
-
-	return (0);
+	ft_add_flag(ptr, format);
+	ft_add_field(ptr, params, format);
+	ft_add_precis(ptr, params, format);
+	ptr->num_conv = ft_isinstr(format[ptr->len_pat], ptr->conv);
+	if (ptr->num_conv >= 0)
+	{
+		ptr->len_pat++;
+		return (1);
+	}
+	return (-1);
 }

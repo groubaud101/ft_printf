@@ -14,67 +14,133 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	test01(void)
-{
-	char	*ptr;
-	char	*ptr2;
+// void	test01(void)
+// {
+// 	char	*ptr;
+// 	char	*ptr2;
 
-	ptr = NULL;
-	ptr2 = malloc(10);
-	printf("ori ret : %i\n", printf(RED"ori\nptr : |%p| ptr2 : |%p|\n"DEF,
-				ptr, ptr2));
-	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\nptr : |%p| ptr2 : |%p|\n"DEF,
-				ptr, ptr2));
+// 	ptr = NULL;
+// 	ptr2 = malloc(10);
+// 	printf("ori ret : %i\n", printf(RED"ori\nptr : |%p| ptr2 : |%p|\n"DEF,
+// 				ptr, ptr2));
+// 	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\nptr : |%p| ptr2 : |%p|\n"DEF,
+// 				ptr, ptr2));
 
-}
+// }
 
-// plante pour double free
-void	test02(void)
-{
-	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -x : |%x|\n"DEF,
-				-42, -42));
-	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -x : |%x|\n"DEF,
-				-42, -42));
-}
+// // plante pour double free
+// void	test02(void)
+// {
+// 	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -x : |%x|\n"DEF,
+// 				-42, -42));
+// 	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -x : |%x|\n"DEF,
+// 				-42, -42));
+// }
 
 void	test03(void)
 {
-	printf("ori ret : %i\n", printf(RED"ori\n42 : X : |%X| X : |%X| X : |%X|\n"DEF,
+	printf("ori ret : %i\n", printf(RED"ori\n42 : %%X : |%X| %%X : |%X| %%X : |%X|\n"DEF,
 				42, 42, 42));
-	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : X : |%X| X : |%X| X : |%X|\n"DEF,
+	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : %%X : |%X| %%X : |%X| %%X : |%X|\n"DEF,
 				42, 42, 42));
 }
 
+// void	test04(void)
+// {
+// 	int	ret;
+
+// 	ret = printf("01 |%05i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n02 |%.5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n03 |%-5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n04 |%-.5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n05 |%.-5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n06 |%.5s|\n", "sa");
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n07 |%.5s|\n", "salut ca va ?");
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n08 |%-0.5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n09 |%-03.5i|\n", 10);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n10 |%-03i|\n", 10);
+// 	printf("ret : %i\n", ret);
+// }
+
+// void	test_05(void)
+// {
+// 	char	*str;
+// 	int		ret;
+
+// 	str = "coucou";
+// 	ret = printf("01 %%10s : |%10s|\n", str);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n02 %%.10s : |%.10s|\n", str);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n03 %%2s : |%2s|\n", str);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n04 %%.2s : |%.2s|\n", str);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n05 %%3.2s |%3.2s|\n", str);
+// 	printf("ret : %i\n", ret);
+
+// }
+
+// void	test_06_c()
+// {
+// 	char	c;
+
+// 	c = '1';
+
+// 	ret = printf("\n01 %%3c : |%3c|\n", c);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n06 %%3c : |%3c|\n", 0);
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n02 %%.10c : |%.10c|\n", c); //erreur
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n03 %%0c : |%0c|\n", c); // erreur
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n04 %%.2c : |%.2c|\n", c); //erreur
+// 	printf("ret : %i\n", ret);
+
+// 	ret = printf("\n05 %%3.2c |%3.2c|\n", c); //erreur
+// 	printf("ret : %i\n", ret);
+
+// }
 
 int		main()
 {
-	// printf("ori : [%%--4i] |%--4i|, |%i|\n", 42, 19);
-	// printf("ori : [%%-4%%] |%-4%|, |%i|\n\n", 42, 19);
-	// printf("ori : [1234]; |%.*i|", 10, 42);
-	// printf("ori : *; |%.*i|", 10, 42);
-
-	// ft_printf("1ft_ : [%%-4%%] |%-4%|\n\n");
-	// ft_printf("2ft_ : [%%--0000-25.i] : |%--0000-25.i|\n[%%01d] : |%01d|\n[%%0.1d] : |%0.1d|", 19, 42, 101);
-	// ft_printf("3ft_ : [1234]; %1234");
-	// ft_printf("I   /-05.3i : |%-05.3i|\n", 42);
-	// ft_printf("II  /-0*(4).3i : |%-0*.3i|\n", 4, 42);
-	// ft_printf("III /-05.*(5)i : |%-05.*i|\n", 5, 42);
-	// ft_printf("IV  /-0*(2).*(3)i : |%-0*.*i|\n", 2, 3, 42);
-	// printf("ori ret : %i\n\n", printf("ori\n42 : |%i| coucou : |%s| c : |%c|\n",
-	// 			42, "coucou", 'c'));
-	// printf("ft_ ret : %i\n", ft_printf("ft_\n42 : |%i| coucou : |%s| c : |%c|\n",
-	// 			42, "coucou", 'c'));
-
-	// a faire ft_memory_to_a
-
-	// printf("ori ret : %i\n\n", printf("ori\n-42 : u : |%u| x : |%x| X : |%X|\n",
-	// 			-42, -42, -42));
-	// printf("ft_ ret : %i\n", ft_printf("ft_\n-42 : u : |%u| x : |%x| X : |%X|\n",
-	// 			-42, -42, -42));
+	int	ret;
+	int	ret2;
+	char	*str;
 
 	// test01();
-	test02();
-	// test03();
+	// test02();
+	test03();
+	// test_04();
+	// test_05_s();
+	//test_06_c();
 
 	return (0);
 }
