@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libprintf.a
+NAME	=	libftprintf.a
 
 DIR_S	=	./ft_printf/
 DIR_L	=	./libft/
