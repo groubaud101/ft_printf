@@ -12,21 +12,16 @@
 
 #include "libft.h"
 
-static void	ft_rec_put_int_base_fd(int n, const char *base, int len, int fd)
+void	ft_put_int_base_fd(int n, const char *base, int len, int fd)
 {
 	if (n >= len || n <= -len)
-		ft_rec_put_int_base_fd(n / len, base, len, fd);
+		ft_put_int_base_fd(n / len, base, len, fd);
 	if (n > -len && n < 0)
 		ft_putchar_fd('-', fd);
-	ft_putchar_fd(base[ft_abs(n % len)] + '0', fd);
+	ft_putchar_fd(base[ft_abs(n % len)], fd);
 }
 
-void	ft_put_int_base_fd(int n, const char *base, int fd)
+void	ft_put_int_base(int n, const char *base, int len)
 {
-	ft_rec_put_int_base_fd(n, base, ft_strlen(base), fd);
-}
-
-void	ft_put_int_base(int n, const char *base)
-{
-	ft_put_int_base_fd(n, base, 1);
+	ft_put_int_base_fd(n, base, len, 1);
 }

@@ -157,14 +157,15 @@ void	ft_putendl(char *s);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr(int n);
 void	ft_putnbr_fd(int n, int fd);
-void	ft_put_int_base(int n, const char *base);
-void	ft_put_int_base_fd(int n, const char *base, int fd);
-void	ft_put_uint_base(unsigned int n, const char *base);
-void	ft_put_uint_base_fd(unsigned int n, const char *base, int fd);
-void	ft_put_ulong_base(unsigned long n, const char *base);
-void	ft_put_ulong_base_fd(unsigned long n, const char *base, int fd);
-void	ft_put_ulonglong_base(unsigned long long n, const char *base);
-void	ft_put_ulonglong_base_fd(unsigned long long n, const char *base, int fd);
+void	ft_put_int_base(int n, const char *base, int len);
+void	ft_put_int_base_fd(int n, const char *base, int len, int fd);
+void	ft_put_uint_base(unsigned int n, const char *base, int len);
+void	ft_put_uint_base_fd(unsigned int n, const char *base, int len, int fd);
+void	ft_put_ulong_base(unsigned long n, const char *base, int len);
+void	ft_put_ulong_base_fd(unsigned long n, const char *base, int len, int fd);
+void	ft_put_ulonglong_base(unsigned long long n, const char *base, int len);
+void	ft_put_ulonglong_base_fd(unsigned long long n, const char *base,
+								int len, int fd);
 void	ft_puttab(char **tab, char *sep);
 void	ft_puttab_fd(char **tab, char *sep, int fd);
 

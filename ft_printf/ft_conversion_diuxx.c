@@ -22,11 +22,11 @@ int	ft_conv_di(t_printf *ptr, va_list params)
 	if (ptr->zero == 1 || ptr->precis > -1)
 	{
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_int_base(nb, 10));
-		ft_put_int_base(nb, base);
+		ft_put_int_base(nb, base, 10);
 	}
 	else
 	{
-		ft_put_int_base(nb, base);
+		ft_put_int_base(nb, base, 10);
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_int_base(nb, 10));
 	}
 	return (1);
@@ -42,11 +42,11 @@ int	ft_conv_u(t_printf *ptr, va_list params)
 	if (ptr->zero == 1)
 	{
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 10));
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 10);
 	}
 	else
 	{
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 10);
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 10));
 	}
 	return (1);
@@ -62,11 +62,11 @@ int	ft_conv_x(t_printf *ptr, va_list params)
 	if (ptr->zero == 1)
 	{
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 16);
 	}
 	else
 	{
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 16);
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
 	}
 	return (1);
@@ -82,11 +82,11 @@ int	ft_conv_xup(t_printf *ptr, va_list params)
 	if (ptr->zero == 1)
 	{
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 16);
 	}
 	else
 	{
-		ft_put_uint_base(nb, base);
+		ft_put_uint_base(nb, base, 16);
 		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
 	}
 	return (1);

@@ -80,7 +80,7 @@ static int	ft_conv_p(t_printf *ptr, va_list params) // penser qu'un ptr null aff
 	else
 	{
 		ft_putstr("0x");
-		ft_put_ulonglong_base(nb, base);
+		ft_put_ulonglong_base(nb, base, 16);
 		ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
 	}
 	return (1);

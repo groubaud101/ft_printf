@@ -23,7 +23,7 @@
 	i = ptr->precis;
 	if (i < ptr->field)
 	 	i = ptr->field;
-	while (i++ < len)
+	while (i > 0 && i-- > len)
 		ft_putchar(c);
 	return (ft_the_max(3, ptr->precis, ptr->field, len));
  }
@@ -41,9 +41,9 @@
 	i = ptr->precis;
 	if (i < ptr->field)
 	 	i = ptr->field;
-	while (i++ < len)
+	while (i > 0 && i++ < len)
 		ft_putchar(c);
 	if (ptr->zero == 1)
-		ft_put_ulonglong_base(n, "0123456789abcdef");
+		ft_put_ulonglong_base(n, "0123456789abcdef", 16);
 	return (ft_the_max(3, ptr->precis, ptr->field, len));
  }

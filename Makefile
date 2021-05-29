@@ -12,7 +12,7 @@
 
 NAME	=	libprintf.a
 
-DIR_S	=	./
+DIR_S	=	./ft_printf/
 DIR_L	=	./libft/
 
 SLIB	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \

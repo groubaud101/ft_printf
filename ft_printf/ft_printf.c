@@ -23,17 +23,17 @@ static t_printf	*ft_init_tprintf(t_printf *ptr)
 		ptr = (t_printf *)malloc(sizeof(t_printf));
 		if (!ptr)
 			return (NULL);
+		ptr->flag = "-0";
+		ptr->conv = "cspdiuxX%";
+		ptr->ret = 0;
 	}
-	ptr->flag = "-0";
-	ptr->conv = "cspdiuxX%";
 	ptr->minus = -1;
 	ptr->zero = -1;
 	ptr->field = -1;
 	ptr->precis = -1;
 	ptr->explicit_precis = -1;
 	ptr->num_conv = -1;
-	ptr->len_pat = -1;
-	ptr->ret = -1;
+	ptr->len_pat = 0;
 	return (ptr);
 }
 
@@ -44,8 +44,10 @@ static const char	*ft_aff_format(t_printf *ptr, const char *format)
 	i = 0;
 	while (format[i] && format[i] != '%')
 		i++;
+	// printf("i : %i\n", i);
 	write(1, (char *)format, i);
 	ptr->ret += i;
+	// printf("format : %s\n", format + i);
 	return (format + i);
 }
 
@@ -55,15 +57,20 @@ int	ft_printf(const char *format, ...)
 	t_printf	*ptr;
 
 	va_start(params, format);
-	ptr = NULL;
+	ptr = NULL; // voir si on peut null directement en dessous
+	ptr = ft_init_tprintf(ptr);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
+			// printf("f : %c\n", *format);
 			ptr = ft_init_tprintf(ptr);
+			if (!ptr)
+				return (-1);
 			if (ft_fill_tprintf(ptr, params, format) == -1)
 				return (-1);
+			// ft_aff_tprintf(ptr);
 			if (ptr->conv[ptr->num_conv] != '%')
 			{
 				ft_conversion(ptr, params);
@@ -71,13 +78,15 @@ int	ft_printf(const char *format, ...)
 					return (-1); // faudra un message d'erreur
 			}
 			else
+			{
 				ft_putchar('%');
-			
+				ptr->ret++;
+			}
 			format += ptr->len_pat;
-			free(ptr);
 		}
 		format = ft_aff_format(ptr, format);
 	}
+	free(ptr);
 	va_end(params);
 	return (ptr->ret);
 }
