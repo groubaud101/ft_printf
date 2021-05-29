@@ -55,10 +55,13 @@ int	ft_printf(const char *format, ...)
 {
 	va_list 	params;
 	t_printf	*ptr;
+	int			ret;
 
 	va_start(params, format);
 	ptr = NULL; // voir si on peut null directement en dessous
 	ptr = ft_init_tprintf(ptr);
+	if (!ptr)
+		return (-1);
 	while (*format)
 	{
 		if (*format == '%')
@@ -67,15 +70,15 @@ int	ft_printf(const char *format, ...)
 			// printf("f : %c\n", *format);
 			ptr = ft_init_tprintf(ptr);
 			if (!ptr)
-				return (-1);
+				return (ft_free_tprintf(ptr));
 			if (ft_fill_tprintf(ptr, params, format) == -1)
-				return (-1);
+				return (ft_free_tprintf(ptr));
 			// ft_aff_tprintf(ptr);
 			if (ptr->conv[ptr->num_conv] != '%')
 			{
 				ft_conversion(ptr, params);
 				if (ptr->ret == -1) // faudra tester les différentes erreurs, voir si ca continue
-					return (-1); // faudra un message d'erreur
+					return (ft_free_tprintf(ptr)); // faudra un message d'erreur
 			}
 			else
 			{
@@ -86,7 +89,9 @@ int	ft_printf(const char *format, ...)
 		}
 		format = ft_aff_format(ptr, format);
 	}
-	free(ptr);
+	ret = ptr->ret;
+	ft_free_tprintf(ptr);
+	// free(ptr);
 	va_end(params);
-	return (ptr->ret);
+	return (ret);
 }
