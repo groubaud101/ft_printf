@@ -46,7 +46,7 @@ OBJS	=	$(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SPRINTF))) \
 
 AR		=	ar rcs
 
-LIB_P	=	-L $(DIR_S) -lprintf
+LIB_P	=	-L . -lftprintf
 TEST	=	-I $(INC) main.c
 
 ## commande

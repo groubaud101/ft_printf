@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "ft_printf.h"
 
 static int	ft_conv_c(t_printf *ptr, va_list params) // à tester, c = 0
@@ -20,69 +19,39 @@ static int	ft_conv_c(t_printf *ptr, va_list params) // à tester, c = 0
 
 	c = (unsigned char)va_arg(params, int);
 	i = 1;
-	while (i++ < ptr->field)
-		ft_putchar(' ');
-	ft_put_uchar(c);
-	ptr->ret += i;
+	if (ptr->minus == -1)
+	{
+		while (i++ < ptr->field)
+			ft_putchar(' ');
+		ft_put_uchar(c);
+	}
+	else
+	{
+		ft_put_uchar(c);
+		while (i++ < ptr->field)
+			ft_putchar(' ');
+	}
+	ptr->ret += i - 1;
 	return (1);
 }
 
 static int	ft_conv_s(t_printf *ptr, va_list params)
 {
 	const char	*str;
-	int			len;
-	int			i;
 
 	str = (const char *)va_arg(params, const char *);
-	if (ptr->field > -1 && ptr->precis == -1)
-	{
-		i = ptr->field;
-		len = ft_strlen(str);
-		while (i++ < len)
-			ft_putchar(' ');
-		ptr->ret += len + (i - ptr->field);
-		write(1, str, len);
-	}
-	else if (ptr->field > -1 && ptr->precis > -1)
-	{
-		i = ptr->field;
-		len = ft_the_min(2, ft_strlen(str), ptr->precis);
-		while (i++ < len)
-			ft_putchar(' ');
-		ptr->ret += len + (i - ptr->field);
-		write(1, str, len);
-	}
-	else if (ptr->precis > -1)
-	{
-		len = ft_the_min(2, ft_strlen(str), ptr->precis);
-		ft_putnstr(str, len); // tester une chaine null
-		ptr->ret += len;
-	}
-	else
-	{
-		ft_putstr((char *)str);
-		ptr->ret += ft_strlen(str);
-	}
+	ptr->ret += ft_aff_s(ptr, str);
 	return (1);
 }
 
 static int	ft_conv_p(t_printf *ptr, va_list params) // penser qu'un ptr null affiche (nil)
 {
 	unsigned long long	nb;
-	const char			*base;
 
-	base = "0123456789abcdef";
 	nb = (unsigned long long)va_arg(params, void *);
 	if (ptr->zero == 1)
-	{
-		ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
-	}
-	else
-	{
-		ft_putstr("0x");
-		ft_put_ulonglong_base(nb, base, 16);
-		ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
-	}
+		ft_putstr("0x");		
+	ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
 	return (1);
 }
 

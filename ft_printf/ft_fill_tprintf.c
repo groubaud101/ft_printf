@@ -44,6 +44,12 @@ static void	ft_add_field(t_printf *ptr, va_list params, const char *format)
 		else
 		{
 			ptr->field = (int)va_arg(params, int);
+			if (ptr->field < 0)
+			{
+				ptr->field = -ptr->field;
+				ptr->minus = 1;
+				ptr->zero = 0;
+			}
 			ptr->len_pat++;
 		}
 	}
