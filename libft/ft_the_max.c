@@ -14,10 +14,10 @@
 
 int	ft_the_max(int size, ...)
 {
-	va_list 	numbers;
-	int			max;
-	int			nb;
-	int			i;
+	va_list	numbers;
+	int		max;
+	int		nb;
+	int		i;
 
 	i = 1;
 	va_start(numbers, size);

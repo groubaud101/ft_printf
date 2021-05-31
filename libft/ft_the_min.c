@@ -14,10 +14,10 @@
 
 int	ft_the_min(int size, ...)
 {
-	va_list 	numbers;
-	int			min;
-	int			nb;
-	int			i;
+	va_list	numbers;
+	int		min;
+	int		nb;
+	int		i;
 
 	i = 1;
 	va_start(numbers, size);
