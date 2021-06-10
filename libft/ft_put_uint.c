@@ -19,7 +19,7 @@ void	ft_put_uint_base_fd(unsigned int n, const char *base, int len, int fd)
 	ft_putchar_fd(base[ft_abs(n % len)], fd);
 }
 
-void	ft_put_uint_base(unsigned int n, const char *base, int len)
+void	ft_put_uint_base(unsigned int n, const char *base)
 {
-	ft_put_uint_base_fd(n, base, len, 1);
+	ft_put_uint_base_fd(n, base, ft_strlen(base), 1);
 }

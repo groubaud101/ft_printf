@@ -13,6 +13,9 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# define FLAGS "0-"
+# define CONVERSION "cspdiuxX%"
+
 # include "libft.h"
 # include "ft_colors.h"
 # include <stdarg.h>
@@ -45,8 +48,10 @@ int		ft_fill_tprintf(t_printf *ptr, va_list params, const char *format);
 int		ft_free_tprintf(t_printf *ptr);
 
 int		ft_conversion(t_printf *ptr, va_list params);
+int		ft_aff_di(t_printf *ptr, int len, int neg);
 int		ft_aff_diuxx(t_printf *ptr, int len);
 int		ft_aff_p(t_printf *ptr, int len, unsigned long long n);
+int		ft_aff_s(t_printf *ptr, const char *str);
 int		ft_conv_di(t_printf *ptr, va_list params);
 int		ft_conv_u(t_printf *ptr, va_list params);
 int		ft_conv_x(t_printf *ptr, va_list params);
