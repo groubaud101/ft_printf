@@ -21,6 +21,7 @@ void	test_01_di(void)
 	int		ret2;
 	int		i = 0;
 
+#if 0
 	ret = printf("ori |%i|\n", 42);
 	printf("ret : %i\n", ret);
 	ret2 = ft_printf("ft_ |%i|\n", 42);
@@ -50,70 +51,78 @@ void	test_01_di(void)
 					i, -21, LONG_MAX, 21, LONG_MIN);
 	printf("ret : %i\n\n", ret2);
 	i++;
-
-	ret = printf("ori %02i %%0*i : |%0*i|\n",
-					i, 10, -1011);
+#endif
+	ret = printf("ori %%-0*(10).8i |%-0*.8i|\n",
+					10, CHAR_MIN);
 	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%0*i : |%0*i|\n",
-					i, 10, -1011);
+	ret2 = ft_printf("ft_ %%-0*(10).8i |%-0*.8i|\n",
+					10, CHAR_MIN);
 	printf("ret : %i\n\n", ret2);
 	i++;
 
-	ret = printf("ori %02i %%0*(21).*(10)i: |%0*.*i|*0\n",
-					i, 21, 10, -101);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%0*(21).*(10)i: |%0*.*i|*0\n",
-					i, 21, 10, -101);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%0*i : |%0*i|\n",
+	// 				i, 10, -1011);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%0*i : |%0*i|\n",
+	// 				i, 10, -1011);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%-3.2i %%4.6i : |%-3.2i| |%4.6i|\n", i, 1, -1);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%-3.2i %%4.6i : |%-3.2i| |%4.6i|\n", i, 1, -1);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%0*(21).*(10)i: |%0*.*i|*0\n",
+	// 				i, 21, 10, -101);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%0*(21).*(10)i: |%0*.*i|*0\n",
+	// 				i, 21, 10, -101);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%-3.2i %%6.4i : |%-3.2i| |%6.4i|\n", i, 1, -1);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%-3.2i %%6.4i : |%-3.2i| |%6.4i|\n", i, 1, -1);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%-3.2i %%4.6i : |%-3.2i| |%4.6i|\n", i, 1, -1);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%-3.2i %%4.6i : |%-3.2i| |%4.6i|\n", i, 1, -1);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%.d : |%.d|\n", i, 0);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%.d : |%.d|\n", i, 0);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%-3.2i %%6.4i : |%-3.2i| |%6.4i|\n", i, 1, -1);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%-3.2i %%6.4i : |%-3.2i| |%6.4i|\n", i, 1, -1);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%.0d : |%.0d|\n", i, 0);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%.0d : |%.0d|\n", i, 0);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%.d : |%.d|\n", i, 0);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%.d : |%.d|\n", i, 0);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%4.0d : |%4.0d|\n", i, 0);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%4.0d : |%4.0d|\n", i, 0);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%.0d : |%.0d|\n", i, 0);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%.0d : |%.0d|\n", i, 0);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%4.2d : |%4.2d|\n", i, 0);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%4.2d : |%4.2d|\n", i, 0);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%4.0d : |%4.0d|\n", i, 0);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%4.0d : |%4.0d|\n", i, 0);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%3.2d : |%3.2d|\n", i, 1);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%3.2d : |%3.2d|\n", i, 1);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%4.2d : |%4.2d|\n", i, 0);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%4.2d : |%4.2d|\n", i, 0);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
-	ret = printf("ori %02i %%.d : |%.d|\n", i, 1);
-	printf("ret : %i\n", ret);
-	ret2 = ft_printf("ft_ %02i %%.d : |%.d|\n", i, 1);
-	printf("ret : %i\n\n", ret2);
-	i++;
+	// ret = printf("ori %02i %%3.2d : |%3.2d|\n", i, 1);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%3.2d : |%3.2d|\n", i, 1);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
+
+	// ret = printf("ori %02i %%.d : |%.d|\n", i, 1);
+	// printf("ret : %i\n", ret);
+	// ret2 = ft_printf("ft_ %02i %%.d : |%.d|\n", i, 1);
+	// printf("ret : %i\n\n", ret2);
+	// i++;
 
 
 }

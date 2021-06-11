@@ -15,116 +15,102 @@
 int	ft_conv_di(t_printf *ptr, va_list params)
 {
 	int				nb;
-	unsigned int	nb2;
-	int			len;
-	const char	*base;
+	unsigned int	u_nb;
+	int				len;
+	int				len_uint;
 
-	base = "0123456789";
 	nb = (int)va_arg(params, int);
-	nb2 = ft_abs(nb);
-	len = ft_the_max(2, ft_len_uint_base(nb2, 10), ptr->precis) + (nb < 0)
-			- (nb == 0 && ptr->precis == 0);
+	u_nb = ft_abs(nb);
+	len_uint = ft_len_uint_base(u_nb, 10);
 	if (ptr->minus != 1)
-	{
-		if (ptr->zero == 1)
-		{
-			if (nb < 0)
-				ft_putchar('-');
-			while (ptr->field > len++)
-			{
-				ft_putchar('0');
-			}
-		}
-		else
-		{
-			while (ptr->field > len++)
-			{
-				ft_putchar(' ');
-			}
-			if (nb < 0)
-				ft_putchar('-');
-		}
-	}
-	len = ft_len_uint_base(nb2, 10) - (nb == 0 && ptr->precis == 0);
-	while (ptr->precis > len++)
-		ft_putchar('0');
+		ft_aff_di(ptr, len_uint, nb);
+	len = len_uint - (nb == 0 && ptr->precis == 0);
 	if (ptr->minus == 1 && nb < 0)
 		ft_putchar('-');
+	while (ptr->precis > len++)
+		ft_putchar('0');
 	if (!(ptr->precis == 0 && nb == 0))
-		ft_put_uint_base(nb2, base);
+		ft_put_uint_base(u_nb, "0123456789");
 	else if (ptr->field <= 0)
 		ptr->ret--;
-	len = ft_the_max(2, ft_len_uint_base(nb2, 10), ptr->precis) + (nb < 0);
-	if (nb == 0 && ptr->precis == 0)
-		len = 0;
 	if (ptr->minus == 1)
-	{
-		while (ptr->field > len++)
-		{
-			ft_putchar(' ');
-		}
-	}
+		ft_aff_di(ptr, len_uint, nb);
 	ptr->ret += ft_the_max(3, ptr->field, ptr->precis + (nb < 0),
-						ft_len_int_base(nb, 10));
+							ft_len_int_base(nb, 10));
 	return (1);
 }
 
 int	ft_conv_u(t_printf *ptr, va_list params)
 {
+	int				len_uint;
 	unsigned int	nb;
-	const char		*base;
+	int				len;
+	int				not_exist;
 
-	base = "0123456789";
 	nb = (unsigned int)va_arg(params, unsigned int);
-	if (ptr->zero == 1)
-	{
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 10));
-		ft_put_uint_base(nb, base);
-	}
-	else
-	{
-		ft_put_uint_base(nb, base);
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 10));
-	}
+	len_uint = ft_len_uint_base(nb, 10);
+	not_exist = (nb == 0 && ptr->precis == 0);
+	if (ptr->minus != 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	len = len_uint - not_exist;
+	while (ptr->precis > len++)
+		ft_putchar('0');
+	if (!(ptr->precis == 0 && nb == 0))
+		ft_put_uint_base(nb, "0123456789");
+	else if (ptr->field <= 0)
+		ptr->ret--;
+	if (ptr->minus == 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	ptr->ret += ft_the_max(3, ptr->field, ptr->precis, len_uint);
 	return (1);
 }
 
 int	ft_conv_x(t_printf *ptr, va_list params)
 {
+	int				len_uint;
 	unsigned int	nb;
-	const char		*base;
+	int				len;
+	int				not_exist;
 
-	base = "0123456789abcdef";
 	nb = (unsigned int)va_arg(params, unsigned int);
-	if (ptr->zero == 1)
-	{
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-		ft_put_uint_base(nb, base);
-	}
-	else
-	{
-		ft_put_uint_base(nb, base);
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-	}
+	len_uint = ft_len_uint_base(nb, 16);
+	not_exist = (nb == 0 && ptr->precis == 0);
+	if (ptr->minus != 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	len = len_uint - not_exist;
+	while (ptr->precis > len++)
+		ft_putchar('0');
+	if (!(ptr->precis == 0 && nb == 0))
+		ft_put_uint_base(nb, "0123456789abcdef");
+	else if (ptr->field <= 0)
+		ptr->ret--;
+	if (ptr->minus == 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	ptr->ret += ft_the_max(3, ptr->field, ptr->precis, len_uint);
 	return (1);
 }
 
 int	ft_conv_xup(t_printf *ptr, va_list params)
 {
+	int				len_uint;
 	unsigned int	nb;
-	const char		*base;
+	int				len;
+	int				not_exist;
 
-	base = "0123456789ABCDEF";
 	nb = (unsigned int)va_arg(params, unsigned int);
-	if (ptr->zero == 1)
-	{
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-		ft_put_uint_base(nb, base);
-	}
-	else
-	{
-		ft_put_uint_base(nb, base);
-		ptr->ret += ft_aff_diuxx(ptr, ft_len_uint_base(nb, 16));
-	}
+	len_uint = ft_len_uint_base(nb, 16);
+	not_exist = (nb == 0 && ptr->precis == 0);
+	if (ptr->minus != 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	len = len_uint - not_exist;
+	while (ptr->precis > len++)
+		ft_putchar('0');
+	if (!(ptr->precis == 0 && nb == 0))
+		ft_put_uint_base(nb, "0123456789ABCDEF");
+	else if (ptr->field <= 0)
+		ptr->ret--;
+	if (ptr->minus == 1)
+		ft_aff_uxx(ptr, len_uint, not_exist);
+	ptr->ret += ft_the_max(3, ptr->field, ptr->precis, len_uint);
 	return (1);
 }

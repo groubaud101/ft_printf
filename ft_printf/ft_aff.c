@@ -13,44 +13,53 @@
  #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_aff_di(t_printf *ptr, int len, int neg)
+int	ft_aff_di(t_printf *ptr, int len_uint, int nb)
 {
-	int		i;
-	char	c;
+	int		len;
 
-	c = ' ';
-	if (ptr->zero == 1)
-		c = '0';
-	if (neg && ptr->zero == 1)
-		ft_putchar('-');		
-	i = ft_the_max(2, ptr->precis, len);
-	if (len == 0)
-		i = 0;
-	if (neg && ptr->zero != 1)
+	len = ft_the_max(2, len_uint, ptr->precis) + (nb < 0)
+			- (nb == 0 && ptr->precis == 0);
+	if (ptr->minus != 1)
 	{
-		i++;
-		ptr->precis++;
+		if (ptr->zero == 1)
+		{
+			if (nb < 0)
+				ft_putchar('-');
+			while (ptr->field > len++)
+				ft_putchar('0');
+		}
+		else
+		{
+			while (ptr->field > len++)
+				ft_putchar(' ');
+			if (nb < 0)
+				ft_putchar('-');
+		}
 	}
-	while (i++ < ptr->field)
-		ft_putchar(c);		
-	return (ft_the_max(3, ptr->precis, ptr->field, len));
+	else
+		while (ptr->field > len++)
+			ft_putchar(' ');
+	return (1);
 }
 
-int	ft_aff_diuxx(t_printf *ptr, int len)
+int	ft_aff_uxx(t_printf *ptr, int len_uint, int exist)
 {
-	int		i;
-	char	c;
+	int		len;
 
-	c = ' ';
-	if (ptr->zero == 1)
-		c = '0';
-	i = ft_the_max(2, ptr->precis, len);
-	if (len == 0)
-		i = 0;
-
-	while (i++ < ptr->field)
-		ft_putchar(c);		
-	return (ft_the_max(3, ptr->precis, ptr->field, len));
+	len = ft_the_max(2, len_uint, ptr->precis) - exist;
+	if (ptr->minus != 1)
+	{
+		if (ptr->zero == 1)
+			while (ptr->field > len++)
+				ft_putchar('0');
+		else
+			while (ptr->field > len++)
+				ft_putchar(' ');
+	}
+	else
+		while (ptr->field > len++)
+			ft_putchar(' ');
+	return (1);
 }
 
 int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
