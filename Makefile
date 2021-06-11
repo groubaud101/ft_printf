@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/29 12:21:57 by groubaud          #+#    #+#              #
-#    Updated: 2021/05/12 18:03:27 by groubaud         ###   ########.fr        #
+#    Updated: 2021/06/11 23:24:07 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ SLIB	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
 			u_lltoa_base put_int put_uint put_ulong put_ulonglong the_max \
 			the_min put_uchar
 
-SPRINTF	=	printf fill_tprintf free_tprintf conversion_csp \
-			aff_tprintf conversion_diuxx aff
+SPRINTF	=	printf fill_tprintf conversion_csp conversion_diuxx aff
 
 INC		=	./include/
 H_INC	=	libft ft_colors ft_printf

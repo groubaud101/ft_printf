@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 21:13:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/28 21:13:22 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/11 23:20:50 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	ft_conv_s(t_printf *ptr, va_list params)
 	const char	*str;
 
 	str = (const char *)va_arg(params, const char *);
+	if (str == NULL)
+		str = "(null)";
 	ptr->ret += ft_aff_s(ptr, str);
 	return (1);
 }

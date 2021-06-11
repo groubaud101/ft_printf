@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/12 18:09:58 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/11 23:21:47 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,12 +207,30 @@ void	test_05_s(void)
 	int		i = 0;
 	str = "coucou";
 
+	ret = printf("ori %02i %%-3.s : _%-3.s_\n", i, NULL);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%-3.s : _%-3.s_\n", i, NULL);
+	printf("ret : %i\n\n", ret2);
+	i++;
+
+	ret = printf("ori %02i %%-9.1s : _%-9.1s_\n", i, NULL);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%-9.1s : _%-9.1s_\n", i, NULL);
+	printf("ret : %i\n\n", ret2);
+	i++;
+
+	ret = printf("ori %02i %%s : _%s_\n", i, NULL);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ori %02i %%s : _%s_\n", i, NULL);
+	printf("ret : %i\n\n", ret2);
+	i++;
+
 	ret = printf("ori %02i %%-4s %%4s : |%-6s %4s|\n", i, "123", "4567");
 	printf("ret : %i\n", ret);
 	ret2 = ft_printf("ft_ %02i %%-4s %%4s : |%-6s %4s|\n", i, "123", "4567");
 	printf("ret : %i\n\n", ret2);
 	i++;
-
+#if 0
 	ret = printf(" 01 %%10s : |%10s|\n", str);
 	printf("ret : %i\n", ret);
 	ret2 = ft_printf("ft_ %%10s : |%10s|\n", str);
@@ -237,7 +255,7 @@ void	test_05_s(void)
 	printf("ret : %i\n", ret);
 	ret2 = ft_printf("ft_ %%3.2s |%3.2s|\n", str);
 	printf("ret : %i\n\n", ret2);
-
+#endif
 }
 
 void	test_06_c()
@@ -349,11 +367,11 @@ int		main()
 	int	ret2;
 	char	*str;
 
-	test_01_di();
+	// test_01_di();
 	// test02();
 	// test03();
 	// test_04();
-	// test_05_s(); // validé
+	test_05_s(); // validé
 	// test_06_c(); // à test sur guacamole
 	// test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
 

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:48:14 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/28 19:48:14 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/11 23:24:44 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,8 @@ int		ft_aff_s(t_printf *ptr, const char *str)
 	int		len;
 	int		i;
 
-	if ((ptr->field > -1 && ptr->precis == -1) || !(ptr->precis > -1))
-		len = ft_strlen(str);
-	else if (ptr->precis > -1)
+	len = ft_strlen(str);
+	if (ptr->precis > -1 && !(ptr->field > -1 && ptr->precis == -1))
 		len = ft_the_min(2, ft_strlen(str), ptr->precis);
 	i = ptr->field;
 	if (ptr->minus == 1)
