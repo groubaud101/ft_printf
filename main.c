@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/11 23:21:47 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/12 17:48:17 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,9 @@ void	test_01_di(void)
 
 void	test02(void)
 {
-	printf("ori ret : %i\n", printf(RED"ori\n42 : -X : |%X| -x : |%x|\n"DEF,
+	printf("ori ret : %i\n", printf("ori\n42 : -X : |%X| -x : |%x|\n",
 				-42, -42));
-	printf("ft_ ret : %i\n\n", ft_printf(CYAN"ft_\n42 : -X : |%X| -x : |%x|\n"DEF,
+	printf("ft_ ret : %i\n\n", ft_printf("ft_\n42 : -X : |%X| -x : |%x|\n",
 				-42, -42));
 }
 
@@ -266,6 +266,11 @@ void	test_06_c()
 
 	c = '1';
 
+	ret = printf(" 01 %%c : |%c|\n", 0);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %%c : |%c|\n", 0);
+	printf("ret : %i\n\n", ret2);
+
 	ret = printf(" 01  -%%-2c* -%%2c* : | -%-2c* -%2c* |\n", 0, 0);
 	printf("ret : %i\n", ret);
 	ret2 = ft_printf("ft_  -%%-2c* -%%2c* : | -%-2c* -%2c* |\n", 0, 0);
@@ -276,10 +281,10 @@ void	test_06_c()
 	// ret2 = ft_printf("ft_  -%%*c* -%%-*c* : | -%*c* -%-*c* |\n", -3, 0, 2, 0);
 	// printf("ret : %i\n\n", ret2);
 
-	// ret = printf(" 01 %%-c%%-c%%c* : |%-c%-c%c*|\n", 1, '0', 0);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %%-c%%-c%%c* : |%-c%-c%c*|\n", 1, '0', 0);
-	// printf("ret : %i\n\n", ret2);
+	ret = printf(" 01 %%-c%%-c%%c* : |%-c%-c%c*|\n", 1, '0', 0);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %%-c%%-c%%c* : |%-c%-c%c*|\n", 1, '0', 0);
+	printf("ret : %i\n\n", ret2);
 
 	// ret = printf(" 01 %%3c : |%3c|\n", c);
 	// printf("ret : %i\n", ret);
@@ -371,9 +376,22 @@ int		main()
 	// test02();
 	// test03();
 	// test_04();
-	test_05_s(); // validé
-	// test_06_c(); // à test sur guacamole
+	//test_05_s();
+	test_06_c(); // à test sur guacamole
 	// test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
 
+	ret = printf("ori %%0012.4%% : |%0012.4%|\n");
+	ret2 = ft_printf("ft_ %%0012.4%% : |%0012.4%|\n");
+	printf("ori : %i, ft_ : %i\n", ret, ret2);
+
+	ret = printf("ori %%09.*(-15)i : |%09.*i|\n", -15, 42);
+	ret2 = ft_printf("ft_ %%09.*(-15)i : |%09.*i|\n", -15, 42);
+	printf("ori : %i, ft_ : %i\n", ret, ret2);
+
+	ret = printf("ori : |%004.6%|\n");
+	ret2 = ft_printf("ft_ : |%004.6%|\n");
+	printf("ori : %i, ft_ : %i\n", ret, ret2);
+
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 13:03:58 by groubaud          #+#    #+#             */
-/*   Updated: 2021/05/12 17:49:36 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/12 12:29:19 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,26 @@ static int	ft_printf_part_two(t_printf *ptr, va_list params)
 	}
 	else
 	{
-		ft_putchar('%');
-		ptr->ret++;
+		int     i;
+		char	c;
+
+		c = ' ';
+		if (ptr->zero == 1)
+			c = '0';
+		i = 1;
+		if (ptr->minus == -1)
+		{
+			while (i++ < ptr->field)
+				ft_putchar(c);
+			ft_putchar('%');
+		}
+		else
+		{
+			ft_putchar('%');
+			while (i++ < ptr->field)
+				ft_putchar(c);
+		}
+		ptr->ret += i - 1;
 	}
 	return (1);
 }

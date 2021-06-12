@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:48:14 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/11 23:24:44 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/12 12:17:54 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
 	c = ' ';
 	if (ptr->zero == 1)
 		c = '0';
-	i = ft_the_max(2, ptr->precis, ptr->field);
+	i = ft_the_max(2, ptr->precis, ptr->field)
+		+ (ptr->precis == 0 && n == 0);
 	if (ptr->minus == 1)
 	{
 		if (ptr->zero != 1)
