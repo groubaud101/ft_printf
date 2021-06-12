@@ -24,7 +24,7 @@
 ** num_conv : 0 1 2 3 4 5 6 7 8
 */
 
-typedef struct	s_printf
+typedef struct s_printf
 {
 	char	*flag;
 	int		minus;

@@ -36,7 +36,7 @@ int	ft_conv_di(t_printf *ptr, va_list params)
 	if (ptr->minus == 1)
 		ft_aff_di(ptr, len_uint, nb);
 	ptr->ret += ft_the_max(3, ptr->field, ptr->precis + (nb < 0),
-							ft_len_int_base(nb, 10));
+			ft_len_int_base(nb, 10));
 	return (1);
 }
 

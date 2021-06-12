@@ -12,12 +12,11 @@
 
 #include "libft.h"
 
-static char	*ft_rec_itoa_base(int n, char *nbr, int i, char *base, int len_base)
+static void	ft_rec_itoa_base(int n, char *nbr, char *base, int len_base)
 {
 	if (n >= len_base || n <= -len_base)
-		nbr = ft_rec_itoa_base(n / len_base, nbr, i - 1, base, len_base);
-	nbr[i] = base[ft_abs(n % len_base)];
-	return (nbr);
+		ft_rec_itoa_base(n / len_base, nbr - 1, base, len_base);
+	*nbr = base[ft_abs(n % len_base)];
 }
 
 char	*ft_itoa_base(int n, char *base)
@@ -31,7 +30,7 @@ char	*ft_itoa_base(int n, char *base)
 	nbr = (char *)ft_calloc(sizeof(*nbr), len_nbr + 1);
 	if (!nbr)
 		return (NULL);
-	nbr = ft_rec_itoa_base(n, nbr, len_nbr - 1, base, len_base);
+	ft_rec_itoa_base(n, nbr + len_nbr - 1, base, len_base);
 	if (n < 0)
 		nbr[0] = '-';
 	return (nbr);

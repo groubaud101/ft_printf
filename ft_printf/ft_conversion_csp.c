@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_conv_c(t_printf *ptr, va_list params) // à tester, c = 0
+static int	ft_conv_c(t_printf *ptr, va_list params)
 {
 	char	c;
 	int		i;
@@ -46,13 +46,13 @@ static int	ft_conv_s(t_printf *ptr, va_list params)
 	return (1);
 }
 
-static int	ft_conv_p(t_printf *ptr, va_list params) // penser qu'un ptr null affiche (nil)
+static int	ft_conv_p(t_printf *ptr, va_list params)
 {
 	unsigned long long	nb;
 
 	nb = (unsigned long long)va_arg(params, void *);
 	if (ptr->zero == 1)
-		ft_putstr("0x");		
+		ft_putstr("0x");
 	ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
 	return (1);
 }
@@ -69,6 +69,5 @@ int 	ft_conversion(t_printf *ptr, va_list params)
 	tab[5] = &ft_conv_u;
 	tab[6] = &ft_conv_x;
 	tab[7] = &ft_conv_xup;
-
 	return (tab[ptr->num_conv](ptr, params));
 }

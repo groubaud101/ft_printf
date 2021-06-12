@@ -21,16 +21,30 @@ static const char	*ft_aff_format(t_printf *ptr, const char *format)
 	i = 0;
 	while (format[i] && format[i] != '%')
 		i++;
-	// printf("i : %i\n", i);
 	write(1, (char *)format, i);
 	ptr->ret += i;
-	// printf("format : %s\n", format + i);
 	return (format + i);
+}
+
+static int	ft_printf_part_two(t_printf *ptr, va_list params)
+{
+	if (ptr->conv[ptr->num_conv] != '%')
+	{
+		ft_conversion(ptr, params);
+		if (ptr->ret == -1)
+			return (-1);
+	}
+	else
+	{
+		ft_putchar('%');
+		ptr->ret++;
+	}
+	return (1);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list 	params;
+	va_list		params;
 	t_printf	ptr;
 
 	va_start(params, format);
@@ -40,22 +54,12 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			ptr = (t_printf){FLAGS, -1, -1, -1, -1, -1, CONVERSION,
-							-1, 0, ptr.ret};
+				-1, 0, ptr.ret};
 			format++;
 			if (ft_fill_tprintf(&ptr, params, format) == -1)
 				return (-1);
-			// ft_aff_tprintf(&ptr);
-			if (ptr.conv[ptr.num_conv] != '%')
-			{
-				ft_conversion(&ptr, params);
-				if (ptr.ret == -1) // faudra tester les différentes erreurs, voir si ca continue
-					return (-1); // faudra un message d'erreur
-			}
-			else
-			{
-				ft_putchar('%');
-				ptr.ret++;
-			}
+			if (ft_printf_part_two(&ptr, params) == -1)
+				return (-1);
 			format += ptr.len_pat;
 		}
 		format = ft_aff_format(&ptr, format);

@@ -19,7 +19,8 @@
 
 static void	ft_add_flag(t_printf *ptr, const char *format)
 {
-	while (format[ptr->len_pat] && ft_isinstr(format[ptr->len_pat], ptr->flag) >= 0)
+	while (format[ptr->len_pat]
+		&& ft_isinstr(format[ptr->len_pat], ptr->flag) >= 0)
 	{
 		if (format[ptr->len_pat] == '-')
 			ptr->minus = 1;
@@ -37,7 +38,7 @@ static void	ft_add_field(t_printf *ptr, va_list params, const char *format)
 	{
 		if (ft_isdigit(format[ptr->len_pat]) == 1)
 		{
-			ptr->field = ft_atoi(format + ptr->len_pat); // comment gere t on l'overflow ?
+			ptr->field = ft_atoi(format + ptr->len_pat);
 			while (ft_isdigit(format[ptr->len_pat]) == 1)
 				ptr->len_pat++;
 		}
@@ -59,10 +60,10 @@ static void	ft_add_precis(t_printf *ptr, va_list params, const char *format)
 {
 	if (format[ptr->len_pat] == '.')
 	{
-		ptr->zero = 0; // last change à test avec csp
+		ptr->zero = 0;
 		ptr->len_pat++;
 		ptr->explicit_precis = 0;
-		if (format[ptr->len_pat] == '*' || ft_isdigit(format[ptr->len_pat])) // verifier que l'etoile est explicit
+		if (format[ptr->len_pat] == '*' || ft_isdigit(format[ptr->len_pat]))
 			ptr->explicit_precis = 1;
 		if (format[ptr->len_pat] == '*')
 		{
@@ -71,7 +72,7 @@ static void	ft_add_precis(t_printf *ptr, va_list params, const char *format)
 		}
 		else
 		{
-			ptr->precis = ft_atoi(format + ptr->len_pat); // comment gere t on l'overflow ?
+			ptr->precis = ft_atoi(format + ptr->len_pat);
 			while (ft_isdigit(format[ptr->len_pat]) == 1)
 				ptr->len_pat++;
 		}
@@ -83,7 +84,6 @@ int	ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)
 	ft_add_flag(ptr, format);
 	ft_add_field(ptr, params, format);
 	ft_add_precis(ptr, params, format);
-	// printf("\nformat[ptr->len_pat %i] : %c\n", ptr->len_pat, format[ptr->len_pat]);
 	ptr->num_conv = ft_isinstr(format[ptr->len_pat], ptr->conv);
 	if (ptr->num_conv >= 0)
 	{

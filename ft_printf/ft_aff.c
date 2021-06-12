@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "ft_printf.h"
+#include "ft_printf.h"
 #include <unistd.h>
 
 int	ft_aff_di(t_printf *ptr, int len_uint, int nb)
@@ -18,7 +18,7 @@ int	ft_aff_di(t_printf *ptr, int len_uint, int nb)
 	int		len;
 
 	len = ft_the_max(2, len_uint, ptr->precis) + (nb < 0)
-			- (nb == 0 && ptr->precis == 0);
+		- (nb == 0 && ptr->precis == 0);
 	if (ptr->minus != 1)
 	{
 		if (ptr->zero == 1)
@@ -72,7 +72,7 @@ int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
 		c = '0';
 	i = ptr->precis;
 	if (i < ptr->field)
-	 	i = ptr->field;
+		i = ptr->field;
 	if (ptr->minus == 1)
 	{
 		if (ptr->zero != 1)
@@ -90,7 +90,7 @@ int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
 	return (ft_the_max(3, ptr->precis, ptr->field, len));
 }
 
-int		ft_aff_s(t_printf *ptr, const char *str)
+int	ft_aff_s(t_printf *ptr, const char *str)
 {
 	int		len;
 	int		i;

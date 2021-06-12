@@ -21,18 +21,18 @@
 #  define BUFF 11
 # endif
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}				t_list;
+}t_list;
 
-typedef struct	s_read
+typedef struct s_read
 {
 	char			*str;
 	int				rd;
 	struct s_read	*next;
-}				t_read;
+}t_read;
 
 /*
 ** Mandatory part one
@@ -134,7 +134,7 @@ char	*ft_strndup(const char *s, size_t n);
 ** String management and memory allocation
 */
 
-char	*ft_substr(char const *s, unsigned int start,size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
@@ -162,10 +162,10 @@ void	ft_put_int_base_fd(int n, const char *base, int len, int fd);
 void	ft_put_uint_base(unsigned int n, const char *base);
 void	ft_put_uint_base_fd(unsigned int n, const char *base, int len, int fd);
 void	ft_put_ulong_base(unsigned long n, const char *base);
-void	ft_put_ulong_base_fd(unsigned long n, const char *base, int len, int fd);
+void	ft_put_ulong_base_fd(unsigned long n, const char *b, int len, int fd);
 void	ft_put_ulonglong_base(unsigned long long n, const char *base);
 void	ft_put_ulonglong_base_fd(unsigned long long n, const char *base,
-								int len, int fd);
+			int len, int fd);
 void	ft_puttab(char **tab, char *sep);
 void	ft_puttab_fd(char **tab, char *sep, int fd);
 
@@ -191,6 +191,6 @@ void	ft_lstadd_back(t_list **alst, t_list *new_lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif
