@@ -68,16 +68,15 @@ int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
 	char	c;
 
 	c = ' ';
-	if (ptr->zero == 1 || ptr->precis > -1)
+	if (ptr->zero == 1)
 		c = '0';
-	i = ptr->precis;
-	if (i < ptr->field)
-		i = ptr->field;
+	i = ft_the_max(2, ptr->precis, ptr->field);
 	if (ptr->minus == 1)
 	{
 		if (ptr->zero != 1)
 			ft_putstr("0x");
-		ft_put_ulonglong_base(n, "0123456789abcdef");
+		if (!(ptr->precis == 0 && n == 0))
+			ft_put_ulonglong_base(n, "0123456789abcdef");
 	}
 	while (i > 0 && i-- > len)
 		ft_putchar(c);
@@ -85,7 +84,8 @@ int	ft_aff_p(t_printf *ptr, int len, unsigned long long n)
 	{
 		if (ptr->zero != 1)
 			ft_putstr("0x");
-		ft_put_ulonglong_base(n, "0123456789abcdef");
+		if (!(ptr->precis == 0 && n == 0))
+			ft_put_ulonglong_base(n, "0123456789abcdef");
 	}
 	return (ft_the_max(3, ptr->precis, ptr->field, len));
 }
