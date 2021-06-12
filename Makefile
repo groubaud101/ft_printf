@@ -31,7 +31,7 @@ SLIB	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
 SPRINTF	=	printf fill_tprintf conversion_csp conversion_diuxx aff
 
 INC		=	./include/
-H_INC	=	libft ft_colors ft_printf
+H_INC	=	libft ft_printf
 INCLUDE	=	$(addprefix $(INC), $(addsuffix .h, $(H_INC)))
 
 CC		=	gcc
