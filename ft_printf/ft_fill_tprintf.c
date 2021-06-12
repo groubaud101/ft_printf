@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:04:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/12 16:33:28 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/12 19:08:26 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static void	ft_add_precis(t_printf *ptr, va_list params, const char *format)
 		}
 		else
 			ptr->precis = ft_atoi(format + ptr->len_pat);
-		while (format[ptr->len_pat] && ft_isinstr(format[ptr->len_pat], ptr->conv) == -1)
+		while (format[ptr->len_pat]
+			&& ft_isinstr(format[ptr->len_pat], ptr->conv) == -1)
 			ptr->len_pat++;
 	}
 	if (ptr->precis >= 0 && ptr->zero == 1)
