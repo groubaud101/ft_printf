@@ -57,6 +57,30 @@ static int	ft_conv_p(t_printf *ptr, va_list params)
 	return (1);
 }
 
+static int	ft_conv_mod(t_printf *ptr, va_list params)
+{
+	char	c;
+	int		i;
+
+	c = '%';
+	i = 1;
+	if (ptr->minus == -1)
+	{
+		while (i++ < ptr->field)
+			ft_putchar(' ');
+		ft_put_uchar(c);
+	}
+	else
+	{
+		ft_put_uchar(c);
+		while (i++ < ptr->field)
+			ft_putchar(' ');
+	}
+	ptr->ret += i - 1;
+	return (1);
+}
+
+
 int 	ft_conversion(t_printf *ptr, va_list params)
 {
 	int	(*tab[9])(t_printf *ptr, va_list params);
@@ -69,5 +93,6 @@ int 	ft_conversion(t_printf *ptr, va_list params)
 	tab[5] = &ft_conv_u;
 	tab[6] = &ft_conv_x;
 	tab[7] = &ft_conv_xup;
+	tab[8] = &ft_conv_mod;
 	return (tab[ptr->num_conv](ptr, params));
 }
