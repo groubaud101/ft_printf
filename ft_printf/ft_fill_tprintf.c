@@ -28,7 +28,7 @@ static void	ft_add_flag(t_printf *ptr, const char *format)
 			ptr->zero = 1;
 		ptr->len_pat++;
 	}
-	if (ptr->minus == 1)
+	if (ptr->minus == 1 && ptr->zero == 1)
 		ptr->zero = 0;
 }
 
@@ -49,7 +49,8 @@ static void	ft_add_field(t_printf *ptr, va_list params, const char *format)
 			{
 				ptr->field = -ptr->field;
 				ptr->minus = 1;
-				ptr->zero = 0;
+				if (ptr->zero == 1)
+					ptr->zero = 0;
 			}
 			ptr->len_pat++;
 		}
@@ -74,9 +75,8 @@ static void	ft_add_precis(t_printf *ptr, va_list params, const char *format)
 		while (format[ptr->len_pat] && ft_isinstr(format[ptr->len_pat], ptr->conv) == -1)
 			ptr->len_pat++;
 	}
-	if (ptr->precis >= 0)
+	if (ptr->precis >= 0 && ptr->zero == 1)
 		ptr->zero = 0;
-
 }
 
 int	ft_fill_tprintf(t_printf *ptr, va_list params, const char *format)

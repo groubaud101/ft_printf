@@ -29,34 +29,11 @@ static const char	*ft_aff_format(t_printf *ptr, const char *format)
 static int	ft_printf_part_two(t_printf *ptr, va_list params)
 {
 	if (ptr->conv[ptr->num_conv] != '%')
-	{
 		ft_conversion(ptr, params);
-		if (ptr->ret == -1)
-			return (-1);
-	}
 	else
-	{
-		int     i;
-		char	c;
-
-		c = ' ';
-		if (ptr->zero == 1)
-			c = '0';
-		i = 1;
-		if (ptr->minus == -1)
-		{
-			while (i++ < ptr->field)
-				ft_putchar(c);
-			ft_putchar('%');
-		}
-		else
-		{
-			ft_putchar('%');
-			while (i++ < ptr->field)
-				ft_putchar(c);
-		}
-		ptr->ret += i - 1;
-	}
+		ft_conv_mod(ptr);
+	if (ptr->ret == -1)
+		return (-1);
 	return (1);
 }
 

@@ -28,7 +28,7 @@ SLIB	=	abs add atoi_base atoi bzero calloc div isalnum isalpha isascii \
 			u_lltoa_base put_int put_uint put_ulong put_ulonglong the_max \
 			the_min put_uchar
 
-SPRINTF	=	printf fill_tprintf conversion_csp conversion_diuxx aff
+SPRINTF	=	printf fill_tprintf conversion_cspmod conversion_diuxx aff
 
 INC		=	./include/
 H_INC	=	libft ft_printf

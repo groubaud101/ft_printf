@@ -377,20 +377,16 @@ int		main()
 	// test03();
 	// test_04();
 	//test_05_s();
-	test_06_c(); // à test sur guacamole
+	// test_06_c(); // à test sur guacamole
 	// test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
 
 	ret = printf("ori %%0012.4%% : |%0012.4%|\n");
 	ret2 = ft_printf("ft_ %%0012.4%% : |%0012.4%|\n");
-	printf("ori : %i, ft_ : %i\n", ret, ret2);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
 
-	ret = printf("ori %%09.*(-15)i : |%09.*i|\n", -15, 42);
-	ret2 = ft_printf("ft_ %%09.*(-15)i : |%09.*i|\n", -15, 42);
-	printf("ori : %i, ft_ : %i\n", ret, ret2);
-
-	ret = printf("ori : |%004.6%|\n");
-	ret2 = ft_printf("ft_ : |%004.6%|\n");
-	printf("ori : %i, ft_ : %i\n", ret, ret2);
+	ret = printf("ori %%004.6%% : |%004.6%|\n");
+	ret2 = ft_printf("ft_ %%004.6%% : |%004.6%|\n");
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
 
 	
 	return (0);

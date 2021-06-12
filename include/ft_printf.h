@@ -52,5 +52,6 @@ int		ft_conv_di(t_printf *ptr, va_list params);
 int		ft_conv_u(t_printf *ptr, va_list params);
 int		ft_conv_x(t_printf *ptr, va_list params);
 int		ft_conv_xup(t_printf *ptr, va_list params);
+int		ft_conv_mod(t_printf *ptr);
 
 #endif
