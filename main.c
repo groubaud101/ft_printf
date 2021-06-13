@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/12 17:48:17 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/13 16:39:49 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,6 +325,66 @@ void	test_07_p()
 	int		ret2;
 	char	*str;
 
+	ret = printf("ori %%5p : |%5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%5p : |%5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%05p : |%05p|\n", NULL);
+	ret2 = ft_printf("ft_ %%05p : |%05p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00--5p : |%00--5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00--5p : |%00--5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00--.5p : |%00--.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00--.5p : |%00--.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00--3.5p : |%00--3.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00--3.5p : |%00--3.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00--5.3p : |%00--5.3p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00--5.3p : |%00--5.3p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%0-.5p : |%0-.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%0-.5p : |%0-.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%0--.5p : |%0--.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%0--.5p : |%0--.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00-.5p : |%00-.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00-.5p : |%00-.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%00-5p : |%00-5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00-5p : |%00-5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+	
+	ret = printf("ori %%00.5p : |%00.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%00.5p : |%00.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%--.5p : |%--.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%--.5p : |%--.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%--5p : |%--5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%--5p : |%--5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%--.5p : |%--.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%--.5p : |%--.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%--10.5p : |%--10.5p|\n", NULL);
+	ret2 = ft_printf("ft_ %%--10.5p : |%--10.5p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+#if 1
 	i = 1;
 	str = malloc(10);
 
@@ -334,36 +394,35 @@ void	test_07_p()
 	printf("ret : %i\n\n", ret2);
 	i++;
 
-	// ret = printf("ori %02i %%p : |%p|\n", i, str);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %02i %%p : |%p|\n", i, str);
-	// printf("ret : %i\n\n", ret2);
-	// i++;
+	ret = printf("ori %02i %%p : |%p|\n", i, str);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%p : |%p|\n", i, str);
+	printf("ret : %i\n\n", ret2);
+	i++;
 
-	// ret = printf("ori %02i %%12p : |%12p|\n", i, -1);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %02i %%12p : |%12p|\n", i, -1);
-	// printf("ret : %i\n\n", ret2);
-	// i++;
+	ret = printf("ori %02i %%12p : |%12p|\n", i, -1);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%12p : |%12p|\n", i, -1);
+	printf("ret : %i\n\n", ret2);
+	i++;
 
-	// ret = printf("ori %02i %%-12p : |%-12p|\n", i, -1);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %02i %%-12p : |%-12p|\n", i, -1);
-	// printf("ret : %i\n\n", ret2);
-	// i++;
+	ret = printf("ori %02i %%-12p : |%-12p|\n", i, -1);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%-12p : |%-12p|\n", i, -1);
+	printf("ret : %i\n\n", ret2);
+	i++;
 
-	// ret = printf("ori %02i %%012p : |%012p|\n", i, -1);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %02i %%012p : |%012p|\n", i, -1);
-	// printf("ret : %i\n\n", ret2);
-	// i++;
+	ret = printf("ori %02i %%012p : |%012p|\n", i, -1);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%012p : |%012p|\n", i, -1);
+	printf("ret : %i\n\n", ret2);
+	i++;
 
-	// ret = printf("ori %02i %%10p : |%10p|\n", i, 16);
-	// printf("ret : %i\n", ret);
-	// ret2 = ft_printf("ft_ %02i %%10p : |%10p|\n", i, 16);
-	// printf("ret : %i\n\n", ret2);
-	// i++;
-
+	ret = printf("ori %02i %%10p : |%10p|\n", i, 16);
+	printf("ret : %i\n", ret);
+	ret2 = ft_printf("ft_ %02i %%10p : |%10p|\n", i, 16);
+	printf("ret : %i\n\n", ret2);
+#endif
 }
 
 int		main()
@@ -378,16 +437,6 @@ int		main()
 	// test_04();
 	//test_05_s();
 	// test_06_c(); // à test sur guacamole
-	// test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
-
-	ret = printf("ori %%0012.4%% : |%0012.4%|\n");
-	ret2 = ft_printf("ft_ %%0012.4%% : |%0012.4%|\n");
-	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
-
-	ret = printf("ori %%004.6%% : |%004.6%|\n");
-	ret2 = ft_printf("ft_ %%004.6%% : |%004.6%|\n");
-	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
-
-	
+	test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
 	return (0);
 }

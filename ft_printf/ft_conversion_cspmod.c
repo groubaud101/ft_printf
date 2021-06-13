@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 21:13:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/12 12:33:31 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/13 15:58:57 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ static int	ft_conv_p(t_printf *ptr, va_list params)
 	unsigned long long	nb;
 
 	nb = (unsigned long long)va_arg(params, void *);
-	if (ptr->zero == 1)
-		ft_putstr("0x");
-	ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16) + 2, nb);
+	ptr->ret += ft_aff_p(ptr, ft_len_ulonglong_base(nb, 16), nb);
 	return (1);
 }
 
