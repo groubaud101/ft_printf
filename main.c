@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/13 16:39:49 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/13 16:52:40 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,6 +325,10 @@ void	test_07_p()
 	int		ret2;
 	char	*str;
 
+	ret = printf("ori %%5.p : |%5.p|\n", NULL);
+	ret2 = ft_printf("ft_ %%5.p : |%5.p|\n", NULL);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+#if 1
 	ret = printf("ori %%5p : |%5p|\n", NULL);
 	ret2 = ft_printf("ft_ %%5p : |%5p|\n", NULL);
 	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
@@ -384,7 +388,8 @@ void	test_07_p()
 	ret = printf("ori %%--10.5p : |%--10.5p|\n", NULL);
 	ret2 = ft_printf("ft_ %%--10.5p : |%--10.5p|\n", NULL);
 	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
-#if 1
+#endif
+#if 0
 	i = 1;
 	str = malloc(10);
 
