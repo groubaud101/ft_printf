@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:48:14 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/13 16:57:36 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/13 18:08:01 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,8 @@ int	ft_aff_uxx(t_printf *ptr, int len_uint, int exist)
 int	ft_aff_p(t_printf *ptr, int len_nb, unsigned long long n)
 {
 	int		len_z;
-	char	c;
 	int		i;
 
-	c = ' ';
-	if (ptr->zero == 1)
-		c = '0';
 	len_z = ft_the_max(2, ptr->precis, len_nb)
 		- (ptr->precis == 0 && n == 0);
 	i = len_z + 2;
@@ -78,15 +74,20 @@ int	ft_aff_p(t_printf *ptr, int len_nb, unsigned long long n)
 		while (ptr->field > i++)
 			ft_putchar(' ');
 	ft_putstr("0x");
-	if (!(ptr->precis == 0 && n == 0))
-		ft_put_ulonglong_base(n, "0123456789abcdef");
 	i = len_nb - (ptr->precis == 0 && n == 0);
 	while (len_z > i++)
 		ft_putchar('0');
 	i = len_z + 2;
-	if (!(ptr->minus != 1 && ptr->zero == -1))
-		while (ptr->field > i++)
-			ft_putchar(c);
+	if (ptr->zero == 1)
+		if (!(ptr->minus != 1 && ptr->zero == -1))
+			while (ptr->field > i++)
+				ft_putchar('0');
+	if (!(ptr->precis == 0 && n == 0))
+		ft_put_ulonglong_base(n, "0123456789abcdef");
+	if (ptr->zero != 1)
+		if (!(ptr->minus != 1 && ptr->zero == -1))
+			while (ptr->field > i++)
+				ft_putchar(' ');
 	return (ft_the_max(2, len_z + 2, ptr->field));
 }
 
