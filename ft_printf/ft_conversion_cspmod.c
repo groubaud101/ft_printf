@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 21:13:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/13 15:58:57 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:02:12 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_conv_mod(t_printf *ptr)
 	int		i;
 
 	c = ' ';
-	if ((ptr->minus <= 0 && (ptr->precis > 0 && ptr->zero == 0))
+	if ((ptr->minus <= 0 && (ptr->precis >= 0 && ptr->zero == 0))
 		|| ptr->zero == 1)
 		c = '0';
 	i = 1;

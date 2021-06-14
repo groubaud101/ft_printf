@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 10:57:40 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/13 17:29:01 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/06/14 14:58:51 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -431,7 +431,31 @@ void	test_07_p()
 	ret2 = ft_printf("ft_ %02i %%10p : |%10p|\n", i, 16);
 	printf("ret : %i\n\n", ret2);
 #endif
+
 }
+
+void	test_08_mod()
+{
+	int ret, ret2;
+
+	ret = printf("ori %%0*(-1).%% : |%0*.%|\n", -1);
+	ret2 = ft_printf("ft_ %%0(-1)*.%% : |%0*.%|\n", -1);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%0*(2).%% : |%0*.%|\n", 2);
+	ret2 = ft_printf("ft_ %%0*(2).%% : |%0*.%|\n", 2);
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%04.0%% : |%04.0%|\n");
+	ret2 = ft_printf("ft_ %%04.0%% : |%04.0%|\n");
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+	ret = printf("ori %%04.1%% : |%04.1%|\n");
+	ret2 = ft_printf("ft_ %%04.1%% : |%04.1%|\n");
+	printf("ori : %i, ft_ : %i\n\n", ret, ret2);
+
+}
+
 
 int		main()
 {
@@ -445,6 +469,7 @@ int		main()
 	// test_04();
 	//test_05_s();
 	// test_06_c(); // à test sur guacamole
-	test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
+	//test_07_p(); // à test sur guacamole, que renvoyer quand p est 0
+test_08_mod();
 	return (0);
 }
