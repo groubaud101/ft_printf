@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_conversion_csp.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groubaud <groubaud@student.s19.be>         +#+  +:+       +#+        */
+/*   By: guroubau <guroubau@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/28 21:13:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/06/14 15:02:12 by groubaud         ###   ########.fr       */
+/*   Created: 2021/05/28 21:13:22 by guroubau          #+#    #+#             */
+/*   Updated: 2021/06/14 15:02:12 by guroubau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_conv_mod(t_printf *ptr)
 	return (1);
 }
 
-int 	ft_conversion(t_printf *ptr, va_list params)
+int	ft_conversion(t_printf *ptr, va_list params)
 {
 	int	(*tab[8])(t_printf *ptr, va_list params);
 
